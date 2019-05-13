@@ -20,6 +20,7 @@ public class InventoryUI : MonoBehaviour
         //double[] balance = new double[10];
         //Image[] _inventorySlotIcons = new Image[10];
         //_inventorySlotIcons. = 10;
+        InventoryManager.instance.onInventoryChange += UpdateInventoryUI;
     }
 
     // Update is called once per frame
@@ -28,6 +29,20 @@ public class InventoryUI : MonoBehaviour
 
         //_inventorySlotIcons.Capacity = 10;
 
+        //if (InventoryManager.instance._inventoryList != null)
+        //{
+        //    foreach (Item item in InventoryManager.instance._inventoryList)
+        //    {
+        //        _inventorySlotIcons[index].sprite = item.itemIconPlaceHolder;
+        //        _inventorySlotIcons[index].color = Color.white;
+        //        index++;
+        //    }
+        //}
+        //index = 0;
+    }
+
+    private void UpdateInventoryUI()
+    {
         if (InventoryManager.instance._inventoryList != null)
         {
             foreach (Item item in InventoryManager.instance._inventoryList)

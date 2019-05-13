@@ -20,6 +20,8 @@ public class InventoryManager : MonoBehaviour
     public int inventoryCapacity;
     public bool isfull = false;
 
+    public delegate void OnInventoryChange();
+    public OnInventoryChange onInventoryChange;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,8 @@ public class InventoryManager : MonoBehaviour
         {
             this._inventoryList.Add(item);
             this.isfull = false;
+
+            onInventoryChange();
         }
         
     }

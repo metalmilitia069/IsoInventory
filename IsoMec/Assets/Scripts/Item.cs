@@ -16,6 +16,11 @@ public class Item : MonoBehaviour
     private TextMeshPro _itemNameFloatText;
     [SerializeField]
     private float _itemNameHeight = 2f;
+    [Header("Item Attributes")]
+    [SerializeField]
+    private int defense;
+    [SerializeField]
+    private int attack;
 
 
     [SerializeField]
@@ -98,6 +103,7 @@ public class Item : MonoBehaviour
                 if(InventoryManager.instance.isfull == false)
                 {
                     this.gameObject.SetActive(false);
+                    //Destroy(this.gameObject);
                 }
                 else
                 {
