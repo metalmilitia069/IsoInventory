@@ -15,6 +15,13 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private LayerMask interactLayer;
 
+
+    [SerializeField]
+    private Player _playerReference;
+
+
+        
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -24,7 +31,7 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _playerReference = this.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -34,18 +41,18 @@ public class PlayerMove : MonoBehaviour
         RaycastHit hit;
         if(Input.GetMouseButtonDown(0))
         {
-            if(Physics.Raycast(ray, out hit, 100))//(ray, out hit, 100, movementLayer)) //(ray, out hit, 100))
+            if(Physics.Raycast(ray, out hit, 100, movementLayer))            
             {
                 _agent.destination = hit.point;
-                //Debug.Log(hit.distance);
-            }
-            else if(Physics.Raycast(ray, out hit, 100, interactLayer))
-            {
-                Debug.Log("Opa! peide nao!");
+                _playerReference._canPick = false;                
             }
 
+            if(Physics.Raycast(ray, out hit, 100, interactLayer))            
+            {
+                Debug.Log("Opa! peide nao!");
+                _playerReference._canPick = true;                
+            }            
         }
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.cyan);
-        
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.cyan);        
     }
 }

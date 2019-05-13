@@ -23,7 +23,7 @@ public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         _playerReference.GetComponent<PlayerMove>().enabled = false;
-        Debug.Log("mozvos desligados");
+        Debug.Log("Mouse over UI");
     }
 
     public void OnPointerExit(PointerEventData eventData)
