@@ -11,17 +11,20 @@ public class Item : MonoBehaviour
     [Header("Item Name Floating Text")]
     //[Multiline(8)]
     [SerializeField]
-    private string _itemName = "";
+    public string _itemName = "";
     [SerializeField]
     private TextMeshPro _itemNameFloatText;
     [SerializeField]
     private float _itemNameHeight = 2f;
     [Header("Item Attributes")]
     [SerializeField]
-    private int defense;
+    public int attackDamage;
     [SerializeField]
-    private int attack;
-
+    public int attackRange;
+    [SerializeField]
+    public int criticalChance;
+    [SerializeField]
+    public string elementalDamage;
 
     [SerializeField]
     public Sprite itemIconPlaceHolder;
