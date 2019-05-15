@@ -25,11 +25,44 @@ public class Item : MonoBehaviour
     public int criticalChance;
     [SerializeField]
     public string elementalDamage;
-
+    [Header("Image Reference")]
     [SerializeField]
     public Sprite itemIconPlaceHolder;
+    [SerializeField]
+    public Texture2D itemIconTransferImage;
     //[SerializeField]
     //private Player _playerReference;
+
+    public ItemCategory itemCategory;
+    public ItemPieceType itemPieceType;
+
+    public enum ItemCategory
+    {
+        Armor,
+        Weapon,
+        Shield,
+        Booster,
+        Currency,
+        Health,
+        Magic,
+        Stamina,
+        Material
+    }
+
+    public enum ItemPieceType
+    {        
+        Helmet,
+        Chest,
+        Belt,
+        Pants,
+        Boots,
+        Weapon,
+        Shield,
+        Earings,
+        Necklace,
+        Rings,
+        None
+    }
 
 
 
@@ -52,6 +85,19 @@ public class Item : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(itemCategory == ItemCategory.Currency || itemCategory == ItemCategory.Health || itemCategory == ItemCategory.Magic || itemCategory == ItemCategory.Material || itemCategory == ItemCategory.Stamina)
+        {
+            this.itemPieceType = ItemPieceType.None;
+        }
+        if(itemCategory == ItemCategory.Weapon)
+        {
+            this.itemPieceType = ItemPieceType.Weapon;
+        }
+        if(itemCategory == ItemCategory.Shield)
+        {
+            this.itemPieceType = ItemPieceType.Shield;
+        }
+
         //_playerReference = FindObjectOfType<Player>();
         _itemNameFloatText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + _itemNameHeight, this.transform.position.z);
         _itemNameFloatText.text = _itemName;

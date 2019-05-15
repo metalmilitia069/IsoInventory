@@ -52,6 +52,14 @@ public class InventoryManager : MonoBehaviour
         
     }
 
+    public void RemoveFromInventory(int slotIndex)
+    {
+        //this._inventoryList.RemoveAt(UIManager.instance.transitionItemIndex);
+        this._inventoryList.RemoveAt(slotIndex);
+
+        onInventoryChange();
+    }
+
     public void GetItemInformation()
     {
 

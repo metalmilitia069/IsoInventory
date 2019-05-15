@@ -29,6 +29,12 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
     public TextMeshProUGUI _itemStatsText;
     [SerializeField]
     public TextMeshProUGUI _itemStatsTextNumbers;
+    [SerializeField]
+    public Image itemHold;
+    [SerializeField]
+    public int transitionItemIndex;
+    //[HideInInspector]
+    public InventorySlot inventorySlotTransition;
     //[SerializeField]
     //private GameObject _inventorySpace;
 
@@ -59,6 +65,11 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
 
 
         this.InventorySwitch();
+
+        if(itemHold.sprite != null)
+        {
+            UIManager.instance.itemHold.transform.position = Input.mousePosition;
+        }
     }
 
     private void InventorySwitch()

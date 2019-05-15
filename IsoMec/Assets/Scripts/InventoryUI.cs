@@ -65,6 +65,12 @@ public class InventoryUI : MonoBehaviour
     {
         if (InventoryManager.instance._inventoryList != null)
         {
+            for (int i = 0; i < _arrayOfSlotsUI.Length; i++)
+            {
+                _arrayOfSlotsUI[i]._slotIcon.sprite = null;
+                _arrayOfSlotsUI[i]._slotIcon.color = new Color(161.0f / 255, 87.0f / 255, 87.0f / 255, 255.0f / 255);  //PS.: must be values between 0-1. Get the values on the Inspector, then divide them by /255 >> example: here, I wanted the color (161,87,87)
+                //so, I need to calculate 161/255, 87/255 and 87/255 with alpha 255/255 = 1
+            }
             foreach (Item item in InventoryManager.instance._inventoryList)
             {
                 //_inventorySlotIcons[index].sprite = item.itemIconPlaceHolder;
