@@ -8,10 +8,10 @@ public class InventoryUI : MonoBehaviour
 {
     //[SerializeField]
     //private Image[] _inventorySlotIcons;
-    [SerializeField]
-    private List<Image> _inventorySlotIcons;
-    [SerializeField]
-    private int _InventorySize;
+    //[SerializeField]
+    //private List<Image> _inventorySlotIcons;
+    //[SerializeField]
+    //private int _InventorySize;
     //[SerializeField]
     //private List<InventorySlot> _listOfSlotsUI;
     [SerializeField]

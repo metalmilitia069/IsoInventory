@@ -13,7 +13,7 @@ public class Item : MonoBehaviour
     [SerializeField]
     public string _itemName = "";
     [SerializeField]
-    private TextMeshPro _itemNameFloatText;
+    public TextMeshPro _itemNameFloatText;
     [SerializeField]
     private float _itemNameHeight = 2f;
     [Header("Item Attributes")]
