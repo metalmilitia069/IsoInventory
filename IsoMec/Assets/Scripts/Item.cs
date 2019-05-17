@@ -27,9 +27,9 @@ public class Item : MonoBehaviour
     public string elementalDamage;
     [Header("Image Reference")]
     [SerializeField]
-    public Sprite itemIconPlaceHolder;
-    [SerializeField]
-    public Texture2D itemIconTransferImage;
+    public Sprite itemIcon;
+    //[SerializeField]
+    //public Texture2D itemIconTransferImage;
     //[SerializeField]
     //private Player _playerReference;
 

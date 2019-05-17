@@ -11,8 +11,14 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public Image _slotIcon;
     [SerializeField]
     public int _slotIndex;
-    
-    
+    [SerializeField]
+    public Item itemStoredInventorySlot;
+
+    private void Start()
+    {
+        //InventoryManager.instance.onInventoryChange += UpdateItemInventorySlot;
+    }
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -47,18 +53,34 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void TransferItem()
     {
-        if (this._slotIcon.sprite == null)
+        //GRAB Item From Inventory
+        if (UIManager.instance.itemHoldImage.sprite == null && this.itemStoredInventorySlot != null)
         {
+            UIManager.instance.itemHoldImage.sprite = this.itemStoredInventorySlot.itemIcon;
+            UIManager.instance.itemHoldImage.gameObject.SetActive(true);
+
+            UIManager.instance.itemHoldObjectTransition = this.itemStoredInventorySlot;
+
+            this._slotIcon.color = Color.gray;
+
             return;
         }
-        //MouseManager.instance.itemHold = InventoryManager.instance._inventoryList[this._slotIndex].itemIconTransferImage;
+        //PLACE Item in Inventory From Equipment
+        if (UIManager.instance.itemHoldImage.sprite != null && this.itemStoredInventorySlot == null)
+        {
+            UIManager.instance.itemHoldImage.sprite = null;
+            UIManager.instance.itemHoldImage.gameObject.SetActive(false);
 
-        //Cursor.SetCursor(MouseManager.instance.itemHold, new Vector2(50, 50), CursorMode.Auto);
-        UIManager.instance.itemHold.sprite = this._slotIcon.sprite;
-        UIManager.instance.itemHold.gameObject.SetActive(true);
-        //UIManager.instance.itemHold.transform.position = Input.mousePosition;
-        this._slotIcon.color = Color.gray;
-        UIManager.instance.inventorySlotTransition = this;
-        UIManager.instance.transitionItemIndex = this._slotIndex;
-    }
+            this.itemStoredInventorySlot = UIManager.instance.itemHoldObjectTransition;
+            UIManager.instance.itemHoldObjectTransition = null;
+
+            this._slotIcon.sprite = this.itemStoredInventorySlot.itemIcon;
+            this._slotIcon.color = Color.white;
+
+            InventoryManager.instance.AddToInventory(this.itemStoredInventorySlot);
+            CharacterEquipmentManager.instance.RemoveFromCharacterEquipment(this.itemStoredInventorySlot);
+
+            return;
+        }
+    }    
 }

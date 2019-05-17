@@ -186,6 +186,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601174}
   m_CullTransparentMesh: 0
+--- !u!1 &14910364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 14910365}
+  m_Layer: 30
+  m_Name: ItemSetsTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &14910365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14910364}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1640923352}
+  - {fileID: 958075267}
+  - {fileID: 1028280190}
+  - {fileID: 1596061492}
+  - {fileID: 1955866464}
+  - {fileID: 1535361649}
+  - {fileID: 1362815858}
+  - {fileID: 633091619}
+  - {fileID: 630589425}
+  - {fileID: 83400651}
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &15541700
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +496,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &57477039
 GameObject:
@@ -882,9 +922,7 @@ MonoBehaviour:
   attackRange: 66
   criticalChance: 777
   elementalDamage: METAL
-  itemIconPlaceHolder: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8,
-    type: 3}
-  itemIconTransferImage: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 97497b6a6d1a2574687988421a5f70f0, type: 3}
   itemCategory: 0
   itemPieceType: 0
   _isPickable: 0
@@ -897,7 +935,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83400647}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -8.55, y: 0, z: -4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -905,8 +943,8 @@ Transform:
   - {fileID: 1626005228}
   - {fileID: 2058965110}
   - {fileID: 57477044}
-  m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_Father: {fileID: 14910365}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &83407260
 GameObject:
@@ -1568,7 +1606,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &170403147
 GameObject:
@@ -1824,6 +1862,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 206137471}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
+--- !u!1 &187407606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 187407608}
+  - component: {fileID: 187407607}
+  m_Layer: 0
+  m_Name: CharacterEquipmentManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &187407607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187407606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e77b7cf2da3804ca3c7983ec5db5fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterEquipmentList: []
+--- !u!4 &187407608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187407606}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.07, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &193766763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,6 +2036,8 @@ MonoBehaviour:
   _slotIcon: {fileID: 332907613}
   _slotIndex: 0
   itemSlotType: 0
+  itemStoredEquipmentPiece: {fileID: 0}
+  hasEquipment: 0
 --- !u!1 &206137469
 GameObject:
   m_ObjectHideFlags: 0
@@ -2946,6 +3031,8 @@ MonoBehaviour:
   _slotIcon: {fileID: 1403886844}
   _slotIndex: 0
   itemSlotType: 0
+  itemStoredEquipmentPiece: {fileID: 0}
+  hasEquipment: 0
 --- !u!1 &397557186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3741,6 +3828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 1565831862}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &516692206
 GameObject:
   m_ObjectHideFlags: 0
@@ -3923,9 +4011,9 @@ MonoBehaviour:
   _itemName: {fileID: 626466180}
   _itemStatsText: {fileID: 644787081}
   _itemStatsTextNumbers: {fileID: 83407262}
-  itemHold: {fileID: 658541234}
+  itemHoldImage: {fileID: 658541234}
   transitionItemIndex: 0
-  inventorySlotTransition: {fileID: 0}
+  itemHoldObjectTransition: {fileID: 0}
 --- !u!4 &532361200
 Transform:
   m_ObjectHideFlags: 0
@@ -4315,6 +4403,8 @@ MonoBehaviour:
   _slotIcon: {fileID: 1384785704}
   _slotIndex: 0
   itemSlotType: 0
+  itemStoredEquipmentPiece: {fileID: 0}
+  hasEquipment: 0
 --- !u!1 &624636466
 GameObject:
   m_ObjectHideFlags: 0
@@ -4637,9 +4727,7 @@ MonoBehaviour:
   attackRange: 55
   criticalChance: 778
   elementalDamage: NATURE
-  itemIconPlaceHolder: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8,
-    type: 3}
-  itemIconTransferImage: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8, type: 3}
   itemCategory: 0
   itemPieceType: 0
   _isPickable: 0
@@ -4652,7 +4740,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630589421}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.87, y: 0, z: -7.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4660,8 +4748,8 @@ Transform:
   - {fileID: 1157455267}
   - {fileID: 692109679}
   - {fileID: 1137275984}
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_Father: {fileID: 14910365}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &633091615
 GameObject:
@@ -4751,9 +4839,7 @@ MonoBehaviour:
   attackRange: 0
   criticalChance: 0
   elementalDamage: NONE
-  itemIconPlaceHolder: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8,
-    type: 3}
-  itemIconTransferImage: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 97497b6a6d1a2574687988421a5f70f0, type: 3}
   itemCategory: 0
   itemPieceType: 0
   _isPickable: 0
@@ -4766,7 +4852,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633091615}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.88, y: 0, z: -7.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4774,8 +4860,8 @@ Transform:
   - {fileID: 166020178}
   - {fileID: 1905829141}
   - {fileID: 756963371}
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_Father: {fileID: 14910365}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &644787079
 GameObject:
@@ -5104,6 +5190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrayOfSlotsUI: []
+  _listOfCharacterEquiSlotsUI: []
 --- !u!1 &658541232
 GameObject:
   m_ObjectHideFlags: 0
@@ -5367,6 +5454,8 @@ MonoBehaviour:
   _slotIcon: {fileID: 1299617392}
   _slotIndex: 0
   itemSlotType: 0
+  itemStoredEquipmentPiece: {fileID: 0}
+  hasEquipment: 0
 --- !u!1 &712797071
 GameObject:
   m_ObjectHideFlags: 0
@@ -5418,6 +5507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 1990343248}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &715858620
 GameObject:
   m_ObjectHideFlags: 0
@@ -5653,6 +5743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 2057099091}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &720335423
 GameObject:
   m_ObjectHideFlags: 0
@@ -5746,7 +5837,7 @@ RectTransform:
   m_Children:
   - {fileID: 653325385}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6172,6 +6263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 1877146991}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &774579321
 GameObject:
   m_ObjectHideFlags: 0
@@ -6409,6 +6501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 1473366210}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &786105523
 GameObject:
   m_ObjectHideFlags: 0
@@ -6632,6 +6725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 938736905}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &807338364
 GameObject:
   m_ObjectHideFlags: 0
@@ -6941,6 +7035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 384692757}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &834014792
 GameObject:
   m_ObjectHideFlags: 0
@@ -7122,6 +7217,8 @@ MonoBehaviour:
   _slotIcon: {fileID: 1156628832}
   _slotIndex: 0
   itemSlotType: 0
+  itemStoredEquipmentPiece: {fileID: 0}
+  hasEquipment: 0
 --- !u!1 &924781764
 GameObject:
   m_ObjectHideFlags: 0
@@ -7325,6 +7422,8 @@ MonoBehaviour:
   _slotIcon: {fileID: 924781766}
   _slotIndex: 0
   itemSlotType: 0
+  itemStoredEquipmentPiece: {fileID: 0}
+  hasEquipment: 0
 --- !u!1 &938736903
 GameObject:
   m_ObjectHideFlags: 0
@@ -7412,7 +7511,7 @@ GameObject:
   - component: {fileID: 958075265}
   - component: {fileID: 958075264}
   m_Layer: 30
-  m_Name: Item (1)
+  m_Name: shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7487,10 +7586,7 @@ MonoBehaviour:
   attackRange: 89
   criticalChance: 78687
   elementalDamage: ICE
-  itemIconPlaceHolder: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8,
-    type: 3}
-  itemIconTransferImage: {fileID: 2800000, guid: 4fbabeea09aa7c844b4bd699077bc6f8,
-    type: 3}
+  itemIcon: {fileID: 21300000, guid: dc70592da75f0124b883c86ad0047357, type: 3}
   itemCategory: 0
   itemPieceType: 0
   _isPickable: 0
@@ -7503,7 +7599,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958075263}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.14, y: 0, z: -1.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7511,8 +7607,8 @@ Transform:
   - {fileID: 1878366945}
   - {fileID: 1277091308}
   - {fileID: 1336992033}
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 14910365}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &960039504
 GameObject:
@@ -7566,6 +7662,8 @@ MonoBehaviour:
   _slotIcon: {fileID: 725402032}
   _slotIndex: 0
   itemSlotType: 0
+  itemStoredEquipmentPiece: {fileID: 0}
+  hasEquipment: 0
 --- !u!1 &968393575
 GameObject:
   m_ObjectHideFlags: 0
@@ -7618,6 +7716,8 @@ MonoBehaviour:
   _slotIcon: {fileID: 1618465153}
   _slotIndex: 0
   itemSlotType: 0
+  itemStoredEquipmentPiece: {fileID: 0}
+  hasEquipment: 0
 --- !u!1 &970955078
 GameObject:
   m_ObjectHideFlags: 0
@@ -7798,6 +7898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 1601176}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1019427729
 GameObject:
   m_ObjectHideFlags: 0
@@ -8144,9 +8245,7 @@ MonoBehaviour:
   attackRange: 678
   criticalChance: 50
   elementalDamage: WIND
-  itemIconPlaceHolder: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8,
-    type: 3}
-  itemIconTransferImage: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8, type: 3}
   itemCategory: 0
   itemPieceType: 0
   _isPickable: 0
@@ -8159,7 +8258,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1028280186}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.14, y: 0, z: -11.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8167,8 +8266,8 @@ Transform:
   - {fileID: 1510101264}
   - {fileID: 785374837}
   - {fileID: 211630264}
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 14910365}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1035325503
 GameObject:
@@ -8298,6 +8397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 1268511516}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1068014919
 GameObject:
   m_ObjectHideFlags: 0
@@ -8891,6 +8991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 1383664201}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1137275979
 GameObject:
   m_ObjectHideFlags: 0
@@ -9242,6 +9343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 586187688}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1156628830
 GameObject:
   m_ObjectHideFlags: 0
@@ -9952,6 +10054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 1159924150}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1264868022
 GameObject:
   m_ObjectHideFlags: 0
@@ -11413,6 +11516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 583635187}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1362815854
 GameObject:
   m_ObjectHideFlags: 0
@@ -11501,9 +11605,7 @@ MonoBehaviour:
   attackRange: 66
   criticalChance: 444
   elementalDamage: POISON
-  itemIconPlaceHolder: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8,
-    type: 3}
-  itemIconTransferImage: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8, type: 3}
   itemCategory: 0
   itemPieceType: 0
   _isPickable: 0
@@ -11516,7 +11618,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362815854}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.14, y: 0, z: -15.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -11524,8 +11626,8 @@ Transform:
   - {fileID: 1734775445}
   - {fileID: 1139878404}
   - {fileID: 1077462490}
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_Father: {fileID: 14910365}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1383664199
 GameObject:
@@ -12070,7 +12172,7 @@ Transform:
   m_Children:
   - {fileID: 397557187}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1469403825
 GameObject:
@@ -12778,7 +12880,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1509252953
 GameObject:
@@ -13095,9 +13197,7 @@ MonoBehaviour:
   attackRange: 7657
   criticalChance: 577
   elementalDamage: EARTH
-  itemIconPlaceHolder: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8,
-    type: 3}
-  itemIconTransferImage: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 97497b6a6d1a2574687988421a5f70f0, type: 3}
   itemCategory: 0
   itemPieceType: 0
   _isPickable: 0
@@ -13110,7 +13210,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535361645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.51, y: 0, z: -7.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13118,8 +13218,8 @@ Transform:
   - {fileID: 1817687799}
   - {fileID: 268566612}
   - {fileID: 1307803177}
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 14910365}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1545287556
 GameObject:
@@ -13375,6 +13475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 184144298}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1579823997
 GameObject:
   m_ObjectHideFlags: 0
@@ -13540,9 +13641,7 @@ MonoBehaviour:
   attackRange: 0
   criticalChance: 0
   elementalDamage: Raw Mat
-  itemIconPlaceHolder: {fileID: 21300000, guid: d53a7388eccbe43498402ad57b276aec,
-    type: 3}
-  itemIconTransferImage: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: d53a7388eccbe43498402ad57b276aec, type: 3}
   itemCategory: 0
   itemPieceType: 0
   _isPickable: 0
@@ -13555,7 +13654,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596061488}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.09, y: 0, z: -11.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13563,8 +13662,8 @@ Transform:
   - {fileID: 1310114998}
   - {fileID: 1290270109}
   - {fileID: 1469721623}
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 14910365}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1602325950
 GameObject:
@@ -13697,6 +13796,8 @@ MonoBehaviour:
   _slotIcon: {fileID: 523426508}
   _slotIndex: 0
   itemSlotType: 0
+  itemStoredEquipmentPiece: {fileID: 0}
+  hasEquipment: 0
 --- !u!1 &1618465151
 GameObject:
   m_ObjectHideFlags: 0
@@ -13882,7 +13983,7 @@ GameObject:
   - component: {fileID: 1640923350}
   - component: {fileID: 1640923354}
   m_Layer: 30
-  m_Name: Item
+  m_Name: sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13920,10 +14021,7 @@ MonoBehaviour:
   attackRange: 443
   criticalChance: 544
   elementalDamage: FIRE
-  itemIconPlaceHolder: {fileID: 21300000, guid: 97497b6a6d1a2574687988421a5f70f0,
-    type: 3}
-  itemIconTransferImage: {fileID: 2800000, guid: dc70592da75f0124b883c86ad0047357,
-    type: 3}
+  itemIcon: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8, type: 3}
   itemCategory: 1
   itemPieceType: 4
   _isPickable: 0
@@ -13936,7 +14034,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640923349}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -4.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13944,8 +14042,8 @@ Transform:
   - {fileID: 1981416088}
   - {fileID: 1279773106}
   - {fileID: 1190085142}
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 14910365}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1640923354
 MeshRenderer:
@@ -14035,6 +14133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 1400025138}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1657253135
 GameObject:
   m_ObjectHideFlags: 0
@@ -14161,6 +14260,8 @@ MonoBehaviour:
   _slotIcon: {fileID: 516692208}
   _slotIndex: 0
   itemSlotType: 0
+  itemStoredEquipmentPiece: {fileID: 0}
+  hasEquipment: 0
 --- !u!1 &1665915764
 GameObject:
   m_ObjectHideFlags: 0
@@ -14286,6 +14387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 624636468}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1734098528
 GameObject:
   m_ObjectHideFlags: 0
@@ -14564,6 +14666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 1657253137}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1741793983
 GameObject:
   m_ObjectHideFlags: 0
@@ -14615,6 +14718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 652268986}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1760324514
 GameObject:
   m_ObjectHideFlags: 0
@@ -14924,6 +15028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 284568285}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1817687798
 GameObject:
   m_ObjectHideFlags: 0
@@ -15073,6 +15178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 236249164}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1877146989
 GameObject:
   m_ObjectHideFlags: 0
@@ -15296,6 +15402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 514460231}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1884734479
 GameObject:
   m_ObjectHideFlags: 0
@@ -15798,6 +15905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 759326372}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1954228697
 GameObject:
   m_ObjectHideFlags: 0
@@ -15849,6 +15957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 715858622}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &1955757035
 GameObject:
   m_ObjectHideFlags: 0
@@ -16066,9 +16175,7 @@ MonoBehaviour:
   attackRange: 666
   criticalChance: 6899
   elementalDamage: ELETRICITY
-  itemIconPlaceHolder: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8,
-    type: 3}
-  itemIconTransferImage: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 97497b6a6d1a2574687988421a5f70f0, type: 3}
   itemCategory: 0
   itemPieceType: 0
   _isPickable: 0
@@ -16081,7 +16188,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955866460}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.93, y: 0, z: -11.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16089,8 +16196,8 @@ Transform:
   - {fileID: 294751124}
   - {fileID: 774579322}
   - {fileID: 1884734484}
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 14910365}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1962022938
 GameObject:
@@ -16148,7 +16255,7 @@ Transform:
   m_Children:
   - {fileID: 1035325504}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1962022941
 MonoBehaviour:
@@ -16565,6 +16672,8 @@ MonoBehaviour:
   _slotIcon: {fileID: 1665915766}
   _slotIndex: 0
   itemSlotType: 0
+  itemStoredEquipmentPiece: {fileID: 0}
+  hasEquipment: 0
 --- !u!1 &2001733251
 GameObject:
   m_ObjectHideFlags: 0
@@ -16913,6 +17022,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 935820489}
+        m_MethodName: WithdrawItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 935820489}
+        m_MethodName: SwapItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2056942452
@@ -17170,6 +17301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotIcon: {fileID: 1887725616}
   _slotIndex: 0
+  itemStoredInventorySlot: {fileID: 0}
 --- !u!1 &2112821990
 GameObject:
   m_ObjectHideFlags: 0
