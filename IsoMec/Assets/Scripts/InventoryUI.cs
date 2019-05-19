@@ -95,7 +95,7 @@ public class InventoryUI : MonoBehaviour
         //index = 0;
     }
 
-    private void InventoryPickup()//problem part
+    private void InventoryPickup()
     {
         index = 0;
         //foreach (Item item in InventoryManager.instance._inventoryList)

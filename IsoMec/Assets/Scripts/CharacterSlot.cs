@@ -140,7 +140,7 @@ public class CharacterSlot : MonoBehaviour
         this.hasEquipment = true;
 
         this._slotIcon.color = Color.white;
-        Debug.Log("aiaiaiaiaaiaiiaiaaiiaiaiaia");        
+        //Debug.Log("aiaiaiaiaaiaiiaiaaiiaiaiaia");        
     }
 
     

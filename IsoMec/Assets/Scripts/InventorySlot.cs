@@ -64,10 +64,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerExit(PointerEventData eventData)
     {
         Debug.Log("mouse exited the slot");
-        if (this._slotIndex < InventoryManager.instance._inventoryList.Count)
-        {
-            UIManager.instance.itemInformationPanel.gameObject.SetActive(false);
-        }
+        //if (this._slotIndex < InventoryManager.instance._inventoryList.Count)
+        //{
+        //    UIManager.instance.itemInformationPanel.gameObject.SetActive(false);
+        //}
+
+        UIManager.instance.itemInformationPanel.gameObject.SetActive(false);
     }
 
     public void TransferItem()
@@ -218,6 +220,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         //this.hasEquipment = true;
 
         this._slotIcon.color = Color.white;
-        Debug.Log("aiaiaiaiaaiaiiaiaaiiaiaiaia");
+        //Debug.Log("aiaiaiaiaaiaiiaiaaiiaiaiaia");
     }
 }

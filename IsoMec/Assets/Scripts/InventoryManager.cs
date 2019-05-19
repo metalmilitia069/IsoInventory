@@ -24,13 +24,16 @@ public class InventoryManager : MonoBehaviour
     public OnInventoryChange onInventoryCleanup;
 
     public delegate void OnEquipmentChange();
-    public OnInventoryChange onEquipmentChange;
+    //public OnInventoryChange onEquipmentChange;
+    public OnEquipmentChange onEquipmentChange;
 
     public delegate void OnInventoryPickup();
-    public OnInventoryChange onInventoryPickup;
+    //public OnInventoryChange onInventoryPickup;
+    public OnInventoryPickup onInventoryPickup;
 
     public delegate void OnInventoryUpdate();
-    public OnInventoryChange onInventoryUpdate;
+    //public OnInventoryChange onInventoryUpdate;
+    public OnInventoryUpdate onInventoryUpdate;
 
     // Start is called before the first frame update
     void Start()
