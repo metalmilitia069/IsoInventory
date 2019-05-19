@@ -148,11 +148,13 @@ public class Item : MonoBehaviour
                 Debug.Log("Catching The Item");
                 
                 InventoryManager.instance.AddToInventory(this);
+                
 
-                if(InventoryManager.instance.isfull == false)
+                if (InventoryManager.instance.isfull == false)
                 {
                     this.gameObject.SetActive(false);
                     //Destroy(this.gameObject);
+                    InventoryManager.instance.onInventoryPickup();
                 }
                 else
                 {

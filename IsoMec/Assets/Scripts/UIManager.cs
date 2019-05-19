@@ -35,6 +35,8 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
     public int transitionItemIndex;
     [SerializeField]
     public Item itemHoldObjectTransition;
+    [SerializeField]
+    public bool isOnTransition = false;
     ////[HideInInspector]
     //public InventorySlot inventorySlotTransition;
     //[SerializeField]

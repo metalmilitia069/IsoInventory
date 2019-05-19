@@ -35,7 +35,8 @@ public class CharacterEquipmentManager : MonoBehaviour
     public void AddToCharacterEquipment(Item item)
     {
         this.characterEquipmentList.Add(item);
-        InventoryManager.instance.onInventoryChange();
+        //InventoryManager.instance.onInventoryChange();//////////////////////////////////////////
+        
     }
 
     //public void RemoveFromCharacterEquipment(int index)
@@ -49,6 +50,6 @@ public class CharacterEquipmentManager : MonoBehaviour
         //this.characterEquipmentList.RemoveAt(index);
         this.characterEquipmentList.Remove(item);
 
-        InventoryManager.instance.onInventoryChange();
+        //InventoryManager.instance.onInventoryChange();///////////////////////////////////////
     }
 }

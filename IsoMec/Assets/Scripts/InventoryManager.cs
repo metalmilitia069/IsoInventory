@@ -21,7 +21,16 @@ public class InventoryManager : MonoBehaviour
     public bool isfull = false;
 
     public delegate void OnInventoryChange();
-    public OnInventoryChange onInventoryChange;
+    public OnInventoryChange onInventoryCleanup;
+
+    public delegate void OnEquipmentChange();
+    public OnInventoryChange onEquipmentChange;
+
+    public delegate void OnInventoryPickup();
+    public OnInventoryChange onInventoryPickup;
+
+    public delegate void OnInventoryUpdate();
+    public OnInventoryChange onInventoryUpdate;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +56,8 @@ public class InventoryManager : MonoBehaviour
             this._inventoryList.Add(item);
             this.isfull = false;
 
-            onInventoryChange();
+            //////////////////////////////onInventoryChange();
+            //onInventoryPickup();
         }
         
     }
@@ -59,7 +69,7 @@ public class InventoryManager : MonoBehaviour
         //this._inventoryList.RemoveAt(slotIndex);
         this._inventoryList.Remove(item);
 
-        onInventoryChange();
+        ////////////////////////////////////onInventoryChange();
     }
 
     public void GetItemInformation()

@@ -67,9 +67,10 @@ public class CharacterSlot : MonoBehaviour
             CharacterEquipmentManager.instance.AddToCharacterEquipment(this.itemStoredEquipmentPiece);
             InventoryManager.instance.RemoveFromInventory(this.itemStoredEquipmentPiece);
 
+            InventoryManager.instance.onInventoryUpdate(); ///////////
+            InventoryManager.instance.onEquipmentChange();
 
-            //InventoryManager.instance.onInventoryChange();
-            //this.hasEquipment = true;
+            //UIManager.instance.isOnTransition = false;
 
             return;
         }
@@ -84,37 +85,21 @@ public class CharacterSlot : MonoBehaviour
             this._slotIcon.color = Color.gray;
 
             this.hasEquipment = false;
+
+            UIManager.instance.isOnTransition = true;
+
             return;
         }
         //SWAP Item from Inventory to Equipment
         if (UIManager.instance.itemHoldImage.sprite != null && this.itemStoredEquipmentPiece != null)
         {
-            //InventoryManager.instance.onInventoryChange();
+            if (this.itemStoredEquipmentPiece == UIManager.instance.itemHoldObjectTransition)
+            {
+                CancelAction();
 
-            //this._slotIcon.sprite = UIManager.instance.itemHoldImage.sprite; //get sprite from transition item and put on current slot
+                return;
+            }
 
-            //UIManager.instance.itemHoldImage.sprite = this.itemStoredEquipmentPiece.itemIcon; //get sprite on current item reference and put on transition
-
-            //CharacterEquipmentManager.instance.RemoveFromCharacterEquipment(this.itemStoredEquipmentPiece); //remove current item reference from equipmentLIST
-            //SwapVariables();
-            ////CharacterEquipmentManager.instance.AddToCharacterEquipment(UIManager.instance.itemHoldObjectTransition); //
-
-            //InventoryManager.instance.RemoveFromInventory(UIManager.instance.itemHoldObjectTransition);
-
-            ////SwapVariables();
-            //return;
-
-            //CharacterEquipmentManager.instance.RemoveFromCharacterEquipment(UIManager.instance.itemHoldObjectTransition);
-            ////Debug.Log("itemHoldObjectTransition = " + UIManager.instance.itemHoldObjectTransition.);
-            ////SwapVariables();
-
-            //this._slotIcon.sprite = this.itemStoredEquipmentPiece.itemIcon;
-            //UIManager.instance.itemHoldImage.sprite = UIManager.instance.itemHoldObjectTransition.itemIcon;
-
-            //CharacterEquipmentManager.instance.RemoveFromCharacterEquipment(UIManager.instance.itemHoldObjectTransition);
-            //CharacterEquipmentManager.instance.AddToCharacterEquipment(this.itemStoredEquipmentPiece);
-            ////Debug.Log("itemHoldObjectTransition = " + UIManager.instance.itemHoldObjectTransition.name);
-                        
             CharacterEquipmentManager.instance.RemoveFromCharacterEquipment(UIManager.instance.itemHoldObjectTransition); //remove from equip list the item on previous slot OOOORRRR
             InventoryManager.instance.RemoveFromInventory(UIManager.instance.itemHoldObjectTransition); //remove from inventory list the item on previous slop
 
@@ -126,6 +111,13 @@ public class CharacterSlot : MonoBehaviour
             UIManager.instance.itemHoldImage.sprite = UIManager.instance.itemHoldObjectTransition.itemIcon;//this.itemStoredEquipmentPiece.itemIcon;
             this._slotIcon.sprite = this.itemStoredEquipmentPiece.itemIcon;
 
+
+            InventoryManager.instance.onInventoryUpdate();////////////////////////
+            InventoryManager.instance.onEquipmentChange();
+
+            UIManager.instance.isOnTransition = true;
+
+            return;
         }        
     }
 
@@ -135,7 +127,20 @@ public class CharacterSlot : MonoBehaviour
         item = UIManager.instance.itemHoldObjectTransition;
         UIManager.instance.itemHoldObjectTransition = this.itemStoredEquipmentPiece;
         this.itemStoredEquipmentPiece = item;
-        item = null;
+        item = null;        
+    }
+
+    public void CancelAction()
+    {
+        UIManager.instance.itemHoldImage.sprite = null;
+        UIManager.instance.itemHoldImage.gameObject.SetActive(false);
+
+        UIManager.instance.itemHoldObjectTransition = null;
+
+        this.hasEquipment = true;
+
+        this._slotIcon.color = Color.white;
+        Debug.Log("aiaiaiaiaaiaiiaiaaiiaiaiaia");        
     }
 
     
