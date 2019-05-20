@@ -31,6 +31,7 @@ public class UISlotsBase : MonoBehaviour
     [SerializeField]
     public Item storedItem;
 
+
     // Start is called before the first frame update
     void Start()
     {

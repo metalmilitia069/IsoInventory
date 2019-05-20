@@ -20,8 +20,11 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
 
     [SerializeField]
     private GameObject _inventoryPanel;
+
     [SerializeField]
     public GameObject itemInformationPanel;
+
+    public List<InventorySlot> listOfinventorySlots;
 
     private void Update()
     {
@@ -43,6 +46,23 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
             }
         }
     }
+        
+    private void Start()
+    {
+        listOfinventorySlots.AddRange(FindObjectsOfType<InventorySlot>());
 
+        EventManager.instance.onAddToInventory += AddToInventorySlot;
+    }
 
+    public void AddToInventorySlot()
+    {
+        for (int i = 0; i < InventoryManager.instance.inventoryList.Count; i++)
+        {
+            if(listOfinventorySlots[i].storedItem == null)
+            {
+                listOfinventorySlots[i].storedItem = InventoryManager.instance.inventoryList[i];
+            }
+        }
+        
+    }
 }

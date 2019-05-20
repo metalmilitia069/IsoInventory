@@ -14,7 +14,14 @@ public class InventoryManager : MonoBehaviour
     }
 
     #endregion
-    
+
+    public List<Item> inventoryList;
+
+    public void AddToInventory(Item item)
+    {
+        this.inventoryList.Add(item);
+        EventManager.instance.onAddToInventory();
+    }
 
     //EXAMPLE OF EVENTS / DELEGATES
     //public delegate void OnInventoryChange();

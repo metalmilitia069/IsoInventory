@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
+    #region Singleton
+
+    public static EventManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    #endregion
+
     //public delegate void ClickOnItem();
     //public static event ClickOnItem OnClickedOnItem;
+    public delegate void OnAddToInventory();
+    public OnAddToInventory onAddToInventory;
 }
