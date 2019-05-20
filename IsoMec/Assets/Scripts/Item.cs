@@ -6,8 +6,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Item : MonoBehaviour
-{
-    
+{    
     [Header("Item Name Floating Text")]
     //[Multiline(8)]
     [SerializeField]
@@ -32,6 +31,19 @@ public class Item : MonoBehaviour
     //public Texture2D itemIconTransferImage;
     //[SerializeField]
     //private Player _playerReference;
+    
+    [SerializeField]
+    private bool _isPickable = false;
+    [SerializeField]
+    private bool _wasPicked = false;
+    [SerializeField]
+    private int _pickableCondition = 0;
+
+    public bool PickableItem
+    {
+        get { return _isPickable; }
+        set { _isPickable = value; }
+    }
 
     public ItemCategory itemCategory;
     public ItemPieceType itemPieceType;
@@ -64,41 +76,27 @@ public class Item : MonoBehaviour
         None
     }
 
-
-
-    [SerializeField]
-    private bool _isPickable = false;
-    [SerializeField]
-    private bool _wasPicked = false;
-    
-    public bool PickableItem
-    {
-        get { return _isPickable; }
-        set { _isPickable = value; }
-        
-    }
-
-    [SerializeField]
-    private int _pickableCondition = 0;
-
-
     // Start is called before the first frame update
     void Start()
     {
-        if(itemCategory == ItemCategory.Currency || itemCategory == ItemCategory.Health || itemCategory == ItemCategory.Magic || itemCategory == ItemCategory.Material || itemCategory == ItemCategory.Stamina)
+        InitializeItemParameters();
+    }
+
+    private void InitializeItemParameters()
+    {
+        if (itemCategory == ItemCategory.Currency || itemCategory == ItemCategory.Health || itemCategory == ItemCategory.Magic || itemCategory == ItemCategory.Material || itemCategory == ItemCategory.Stamina)
         {
             this.itemPieceType = ItemPieceType.None;
         }
-        if(itemCategory == ItemCategory.Weapon)
+        if (itemCategory == ItemCategory.Weapon)
         {
             this.itemPieceType = ItemPieceType.Weapon;
         }
-        if(itemCategory == ItemCategory.Shield)
+        if (itemCategory == ItemCategory.Shield)
         {
             this.itemPieceType = ItemPieceType.Shield;
         }
-
-        //_playerReference = FindObjectOfType<Player>();
+        
         _itemNameFloatText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + _itemNameHeight, this.transform.position.z);
         _itemNameFloatText.text = _itemName;
     }
@@ -122,7 +120,7 @@ public class Item : MonoBehaviour
 
     private void OnMouseExit()
     {
-        _itemNameFloatText.gameObject.SetActive(false);
+        this._itemNameFloatText.gameObject.SetActive(false);
     }
 
     //[ContextMenu("Do Something")]
@@ -147,19 +145,19 @@ public class Item : MonoBehaviour
             {
                 //Debug.Log("Catching The Item");
                 
-                InventoryManager.instance.AddToInventory(this);
+                //InventoryManager.instance.AddToInventory(this);
                 
 
-                if (InventoryManager.instance.isfull == false)
-                {
-                    this.gameObject.SetActive(false);
-                    //Destroy(this.gameObject);
-                    InventoryManager.instance.onInventoryPickup();
-                }
-                else
-                {
-                    this._isPickable = false;
-                }
+                //if (InventoryManager.instance.isfull == false)
+                //{
+                //    this.gameObject.SetActive(false);
+                //    //Destroy(this.gameObject);
+                //    InventoryManager.instance.onInventoryPickup();
+                //}
+                //else
+                //{
+                //    this._isPickable = false;
+                //}
 
             }            
         }

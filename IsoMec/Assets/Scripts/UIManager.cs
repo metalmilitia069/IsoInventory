@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-//using UnityEngine.Experimental.UIElements;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
@@ -18,78 +17,32 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
     }
 
     #endregion
-    [Header("Inventory UI Settings: ")]
+
     [SerializeField]
     private GameObject _inventoryPanel;
     [SerializeField]
     public GameObject itemInformationPanel;
-    [SerializeField]
-    public TextMeshProUGUI _itemName;
-    [SerializeField]
-    public TextMeshProUGUI _itemStatsText;
-    [SerializeField]
-    public TextMeshProUGUI _itemStatsTextNumbers;
-    [SerializeField]
-    public Image itemHoldImage;
-    [SerializeField]
-    public int transitionItemIndex;
-    [SerializeField]
-    public Item itemHoldObjectTransition;
-    [SerializeField]
-    public bool isOnTransition = false;
-    ////[HideInInspector]
-    //public InventorySlot inventorySlotTransition;
-    //[SerializeField]
-    //private GameObject _inventorySpace;
 
-
-    //[SerializeField]
-    //private List<Button> _inventoryUIItems;
-
-    //private int index;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        //foreach (Button item in _inventorySpace.GetComponentsInChildren<Button>())
-        //{
-        //    _inventoryUIItems.Add(item);
-        //}
-        
+        OpenInventoryPanel();
+        //_inventoryPanel == null ? _inventoryPanel.gameObject.SetActive(true) : _inventoryPanel.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {        
-        //foreach (Item item in InventoryManager.instance._inventoryList)
-        //{
-        //    GameObject butt = _inventoryUIItems[index].gameObject;
-        //    butt.GetComponentInChildren<Transform>().GetComponent<Image>().sprite = item.itemIconPlaceHolder;            
-        //}
-
-
-        this.InventorySwitch();
-
-        if(itemHoldImage.sprite != null)
-        {
-            UIManager.instance.itemHoldImage.transform.position = Input.mousePosition;
-        }
-    }
-
-    private void InventorySwitch()
+    private void OpenInventoryPanel()
     {
-        if (Input.GetButtonDown("InventoryButtom"))
+        if (Input.GetButtonDown("InventoryButton"))
         {
-            if (_inventoryPanel.activeSelf)
+            if (!this._inventoryPanel.activeSelf)
             {
-                _inventoryPanel.SetActive(false);
+                this._inventoryPanel.gameObject.SetActive(true);
             }
             else
             {
-                _inventoryPanel.SetActive(true);
+                this._inventoryPanel.gameObject.SetActive(false);
             }
         }
     }
 
-    
+
 }

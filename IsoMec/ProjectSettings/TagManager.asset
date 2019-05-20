@@ -35,7 +35,7 @@ TagManager:
   - 
   - 
   - 
-  - InteractLayer
+  - ItemPickupLayer
   - MovementLayer
   m_SortingLayers:
   - name: Default

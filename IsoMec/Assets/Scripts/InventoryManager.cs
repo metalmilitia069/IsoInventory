@@ -14,69 +14,12 @@ public class InventoryManager : MonoBehaviour
     }
 
     #endregion
-    [SerializeField]
-    public List<Item> _inventoryList;
+    
 
-    public int inventoryCapacity;
-    public bool isfull = false;
+    //EXAMPLE OF EVENTS / DELEGATES
+    //public delegate void OnInventoryChange();
+    //public OnInventoryChange onInventoryCleanup;
+    //InventoryManager.instance.onInventoryCleanup += CleanupInventory;
 
-    public delegate void OnInventoryChange();
-    public OnInventoryChange onInventoryCleanup;
-
-    public delegate void OnEquipmentChange();
-    //public OnInventoryChange onEquipmentChange;
-    public OnEquipmentChange onEquipmentChange;
-
-    public delegate void OnInventoryPickup();
-    //public OnInventoryChange onInventoryPickup;
-    public OnInventoryPickup onInventoryPickup;
-
-    public delegate void OnInventoryUpdate();
-    //public OnInventoryChange onInventoryUpdate;
-    public OnInventoryUpdate onInventoryUpdate;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void AddToInventory(Item item)
-    {
-        if(_inventoryList.Count >= inventoryCapacity)
-        {
-            Debug.Log("Inventory is Full!!!");
-            this.isfull = true;
-        }
-        else
-        {
-            this._inventoryList.Add(item);
-            this.isfull = false;
-
-            //////////////////////////////onInventoryChange();
-            //onInventoryPickup();
-        }
-        
-    }
-
-    //public void RemoveFromInventory(int slotIndex)
-    public void RemoveFromInventory(Item item)
-    {
-        //this._inventoryList.RemoveAt(UIManager.instance.transitionItemIndex);
-        //this._inventoryList.RemoveAt(slotIndex);
-        this._inventoryList.Remove(item);
-
-        ////////////////////////////////////onInventoryChange();
-    }
-
-    public void GetItemInformation()
-    {
-
-    }
+    
 }

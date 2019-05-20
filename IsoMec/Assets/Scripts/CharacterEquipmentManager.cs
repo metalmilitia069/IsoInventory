@@ -13,43 +13,5 @@ public class CharacterEquipmentManager : MonoBehaviour
     }
     #endregion
 
-    public delegate void OnCharacterEquipmentChange();
-    public OnCharacterEquipmentChange onCharacterEquipmentChange;
-
-    [SerializeField]
-    public List<Item> characterEquipmentList;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void AddToCharacterEquipment(Item item)
-    {
-        this.characterEquipmentList.Add(item);
-        //InventoryManager.instance.onInventoryChange();//////////////////////////////////////////
-        
-    }
-
-    //public void RemoveFromCharacterEquipment(int index)
-    //{
-    //    this.characterEquipmentList.RemoveAt(index);
-    //    //this.characterEquipmentList.Remove()
-    //}
-
-    public void RemoveFromCharacterEquipment(Item item)
-    {
-        //this.characterEquipmentList.RemoveAt(index);
-        this.characterEquipmentList.Remove(item);
-
-        //InventoryManager.instance.onInventoryChange();///////////////////////////////////////
-    }
+    
 }

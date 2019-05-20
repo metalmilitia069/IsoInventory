@@ -13,14 +13,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private LayerMask movementLayer;
     [SerializeField]
-    private LayerMask interactLayer;
-
+    private LayerMask itemPickupLayer;
 
     [SerializeField]
     private Player _playerReference;
-
-
-        
 
     private void Awake()
     {
@@ -47,9 +43,8 @@ public class PlayerMove : MonoBehaviour
                 _playerReference._canPick = false;                
             }
 
-            if(Physics.Raycast(ray, out hit, 100, interactLayer))            
-            {
-                Debug.Log("Opa! peide nao!");
+            if(Physics.Raycast(ray, out hit, 100, itemPickupLayer))            
+            {                
                 _playerReference._canPick = true;                
             }            
         }
