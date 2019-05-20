@@ -23,6 +23,16 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
 
     [SerializeField]
     public GameObject itemInformationPanel;
+    [SerializeField]
+    public TextMeshProUGUI itemNameText;
+    [SerializeField]
+    public TextMeshProUGUI itemStatsText;
+    [SerializeField]
+    public TextMeshProUGUI itemStatsNumbersText;
+
+
+    [SerializeField]
+    public GameObject inventorySpace;
 
     public List<InventorySlot> listOfinventorySlots;
 
@@ -49,20 +59,22 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
         
     private void Start()
     {
-        listOfinventorySlots.AddRange(FindObjectsOfType<InventorySlot>());
+        //listOfinventorySlots.AddRange(FindObjectsOfType<InventorySlot>());
 
-        EventManager.instance.onAddToInventory += AddToInventorySlot;
+        listOfinventorySlots.AddRange(inventorySpace.GetComponentsInChildren<InventorySlot>());
+
+        //EventManager.instance.onAddToInventory += AddToInventorySlot;
     }
 
-    public void AddToInventorySlot()
+    public void AddToInventorySlot(Item item)
     {
         for (int i = 0; i < InventoryManager.instance.inventoryList.Count; i++)
         {
-            if(listOfinventorySlots[i].storedItem == null)
+            if (listOfinventorySlots[i].storedItem == null)
             {
-                listOfinventorySlots[i].storedItem = InventoryManager.instance.inventoryList[i];
+                listOfinventorySlots[i].storedItem = item;
             }
         }
-        
+
     }
 }

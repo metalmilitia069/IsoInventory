@@ -19,4 +19,7 @@ public class EventManager : MonoBehaviour
     //public static event ClickOnItem OnClickedOnItem;
     public delegate void OnAddToInventory();
     public OnAddToInventory onAddToInventory;
+
+    public delegate void OnItemPickup();
+    public OnItemPickup onItemPickup;
 }

@@ -10,9 +10,9 @@ public class Item : MonoBehaviour
     [Header("Item Name Floating Text")]
     //[Multiline(8)]
     [SerializeField]
-    public string _itemName = "";
+    public string itemName = "";
     [SerializeField]
-    public TextMeshPro _itemNameFloatText;
+    public TextMeshPro itemNameFloatText;
     [SerializeField]
     private float _itemNameHeight = 2f;
     [Header("Item Attributes")]
@@ -97,8 +97,8 @@ public class Item : MonoBehaviour
             this.itemPieceType = ItemPieceType.Shield;
         }
         
-        _itemNameFloatText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + _itemNameHeight, this.transform.position.z);
-        _itemNameFloatText.text = _itemName;
+        itemNameFloatText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + _itemNameHeight, this.transform.position.z);
+        itemNameFloatText.text = itemName;
     }
 
     // Update is called once per frame
@@ -114,13 +114,13 @@ public class Item : MonoBehaviour
             this._isPickable = true;            
             _pickableCondition = 0;
         }
-        _itemNameFloatText.gameObject.SetActive(true);
-        _itemNameFloatText.transform.LookAt(Camera.main.transform);
+        itemNameFloatText.gameObject.SetActive(true);
+        itemNameFloatText.transform.LookAt(Camera.main.transform);
     }
 
     private void OnMouseExit()
     {
-        this._itemNameFloatText.gameObject.SetActive(false);
+        this.itemNameFloatText.gameObject.SetActive(false);
     }
 
     //[ContextMenu("Do Something")]
@@ -146,18 +146,18 @@ public class Item : MonoBehaviour
                 //Debug.Log("Catching The Item");
                 
                 InventoryManager.instance.AddToInventory(this);
-                
 
-                //if (InventoryManager.instance.isfull == false)
-                //{
-                //    this.gameObject.SetActive(false);
-                //    //Destroy(this.gameObject);
-                //    InventoryManager.instance.onInventoryPickup();
-                //}
-                //else
-                //{
-                //    this._isPickable = false;
-                //}
+
+                if (InventoryManager.instance.isFull == false)
+                {
+                    this.gameObject.SetActive(false);
+                    //Destroy(this.gameObject);
+                    //InventoryManager.instance.onInventoryPickup();
+                }
+                else
+                {
+                    this._isPickable = false;
+                }
 
             }            
         }
