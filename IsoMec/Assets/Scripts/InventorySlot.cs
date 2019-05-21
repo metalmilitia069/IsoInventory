@@ -6,9 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventorySlot : UISlotsBase, IPointerEnterHandler, IPointerExitHandler
-{
-    //[SerializeField]
-    //private GameObject _itemInformationPanel;
+{    
     public void OnPointerEnter(PointerEventData eventData)
     {
         if(this.storedItem != null)

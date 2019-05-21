@@ -76,8 +76,7 @@ public class UISlotsBase : MonoBehaviour
     }
 
     private void SetInformationPanelReference()
-    {
-        //this._itemInformationPanel = UIManager.instance.itemInformationPanel;
+    {        
         this.itemNameText = UIManager.instance.itemNameText;
         this.itemStatsText = UIManager.instance.itemStatsText;
         this.itemStatsNumbersText = UIManager.instance.itemStatsNumbersText;
@@ -98,5 +97,32 @@ public class UISlotsBase : MonoBehaviour
         this.itemNameText.text = null;
         this.itemStatsText.text = null;
         this.itemStatsNumbersText.text = null; 
+    }
+
+    public void TranferItem()
+    {
+        if (this.storedItem != null && InventoryManager.instance.ItemTransfer == null)
+        {            
+            InventoryManager.instance.ItemTransfer = this.storedItem;
+            this.itemIcon.color = Color.gray;
+            return;
+        }
+        if (this.storedItem != null && InventoryManager.instance.ItemTransfer != null)
+        {
+            if (InventoryManager.instance.ItemTransfer == this.storedItem)
+            {
+                InventoryManager.instance.ItemTransfer = null;
+                this.itemIcon.color = Color.white;
+                return;
+            }
+            else
+            {
+
+            }
+            Debug.Log("mozovos");
+            return;
+        }
+        //Debug.Log("mozovos");
+        
     }
 }

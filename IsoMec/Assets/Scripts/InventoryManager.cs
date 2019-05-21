@@ -20,6 +20,8 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField]
     private int _inventoryCapacity;
+    [SerializeField]
+    public Item ItemTransfer;
 
     public void AddToInventory(Item item)
     {
