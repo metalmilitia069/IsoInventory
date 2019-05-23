@@ -22,4 +22,9 @@ public class EventManager : MonoBehaviour
 
     public delegate void OnItemPickup();
     public OnItemPickup onItemPickup;
+
+    public delegate void OnItemRemoved();
+    public OnItemRemoved onItemRemoved;
+
+
 }

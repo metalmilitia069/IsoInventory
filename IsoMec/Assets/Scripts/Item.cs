@@ -35,7 +35,7 @@ public class Item : MonoBehaviour
     [SerializeField]
     private bool _isPickable = false;
     [SerializeField]
-    private bool _wasPicked = false;
+    public bool wasPicked = false;
     [SerializeField]
     private int _pickableCondition = 0;
 
@@ -146,6 +146,8 @@ public class Item : MonoBehaviour
                 //Debug.Log("Catching The Item");
                 
                 InventoryManager.instance.AddToInventory(this);
+                UIManager.instance.AddToInventorySlotOnPickup(this);
+                EventManager.instance.onItemPickup();
 
 
                 if (InventoryManager.instance.isFull == false)

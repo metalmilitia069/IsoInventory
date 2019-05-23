@@ -29,9 +29,11 @@ public class InventoryManager : MonoBehaviour
         {
             this.isFull = false;
             this.inventoryList.Add(item);
-            UIManager.instance.AddToInventorySlot(item);
+            //UIManager.instance.AddToInventorySlotOnPickup(item);
 
-            OrganizeInventoryList();
+            ////OrganizeInventoryList();
+
+            //EventManager.instance.onItemPickup();
         }
         else
         {
@@ -41,6 +43,8 @@ public class InventoryManager : MonoBehaviour
 
     }
 
+
+
     public void OrganizeInventoryList()
     {
         this.inventoryList.Clear();
@@ -49,10 +53,15 @@ public class InventoryManager : MonoBehaviour
         {
             if (UIManager.instance.listOfinventorySlots[i].storedItem != null)
             {
-                this.inventoryList.Add(UIManager.instance.listOfinventorySlots[i].storedItem);
-                EventManager.instance.onItemPickup();
+                this.inventoryList.Add(UIManager.instance.listOfinventorySlots[i].storedItem);                
             }            
         }
+    }
+
+    public void RemoveFromInventory(Item item)
+    {
+        this.inventoryList.Remove(item);
+        //OrganizeInventoryList();
     }
 
     //EXAMPLE OF EVENTS / DELEGATES
