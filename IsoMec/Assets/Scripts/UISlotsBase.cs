@@ -141,24 +141,17 @@ public class UISlotsBase : MonoBehaviour
             if (this != UIManager.instance.uiSlotReference)
             {
                 InventoryManager.instance.RemoveFromInventory(UIManager.instance.uiSlotReference.storedItem);
-                //InventoryManager.instance.RemoveFromInventory(InventoryManager.instance.ItemTransfer);
                 CharacterEquipmentManager.instance.RemoveFromEquipmentList(UIManager.instance.uiSlotReference.storedItem);
-
                 Item item = InventoryManager.instance.ItemTransfer;
                 InventoryManager.instance.ItemTransfer = this.storedItem;
-
                 InventoryManager.instance.RemoveFromInventory(this.storedItem);
                 InventoryManager.instance.RemoveFromInventory(UIManager.instance.uiSlotReference.storedItem);
                 CharacterEquipmentManager.instance.RemoveFromEquipmentList(this.storedItem);
                 CharacterEquipmentManager.instance.RemoveFromEquipmentList(UIManager.instance.uiSlotReference.storedItem);
-
-
                 UIManager.instance.RemoveFromInventorySlot(UIManager.instance.uiSlotReference);
                 UIManager.instance.OnItemRemoved();
                 CharacterEquipmentManager.instance.OnItemRemovedFromCharacterEquipment();
-
                 UIManager.instance.AddToInventorySlotOnTransfer(this, item);
-                //UIManager.instance.AddToCharacterSlotOnTransfer(this, item);
                 if (this is CharacterSlot)
                 {
                     CharacterEquipmentManager.instance.AddToCharacterEquipmentList(item);//
@@ -166,9 +159,7 @@ public class UISlotsBase : MonoBehaviour
                 else if (this is InventorySlot)
                 {
                     InventoryManager.instance.AddToInventory(item);//
-                }
-                //InventoryManager.instance.AddToInventory(InventoryManager.instance.ItemTransfer);//(item);//
-                //CharacterEquipmentManager.instance.AddToCharacterEquipmentList(InventoryManager.instance.ItemTransfer);//(item);//
+                }                
                 UIManager.instance.OnGrabbingItem();
                 return;
             }
@@ -178,7 +169,6 @@ public class UISlotsBase : MonoBehaviour
         {
             InventoryManager.instance.RemoveFromInventory(InventoryManager.instance.ItemTransfer);
             CharacterEquipmentManager.instance.RemoveFromEquipmentList(InventoryManager.instance.ItemTransfer);
-
             UIManager.instance.RemoveFromInventorySlot(UIManager.instance.uiSlotReference);
             UIManager.instance.OnItemRemoved();
             CharacterEquipmentManager.instance.OnItemRemovedFromCharacterEquipment();
@@ -191,13 +181,10 @@ public class UISlotsBase : MonoBehaviour
             else if(this is CharacterSlot)
             {
                 CharacterEquipmentManager.instance.AddToCharacterEquipmentList(this.storedItem);
-            }
-            
+            }            
             UIManager.instance.OnItemRemoved();
             UIManager.instance.OnPuttingItem();
             return;            
         }
-
-
     }
 }

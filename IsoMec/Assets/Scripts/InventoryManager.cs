@@ -54,8 +54,21 @@ public class InventoryManager : MonoBehaviour
             if (UIManager.instance.listOfinventorySlots[i].storedItem != null)
             {
                 this.inventoryList.Add(UIManager.instance.listOfinventorySlots[i].storedItem);                
-            }            
+            }
         }
+        for (int i = 0; i < UIManager.instance.listOfinventorySlots.Count; i++)
+        {
+            UIManager.instance.RemoveFromInventorySlot(UIManager.instance.listOfinventorySlots[i]);
+        }
+
+        UIManager.instance.OnItemRemoved();
+
+        for (int i = 0; i < this.inventoryList.Count; i++)
+        {
+
+            UIManager.instance.AddToInventorySlotOnPickup(this.inventoryList[i]);
+        }
+        EventManager.instance.onItemPickup();
     }
 
     public void RemoveFromInventory(Item item)
