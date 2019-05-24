@@ -20,8 +20,14 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
 
     [SerializeField]
     private GameObject _inventoryPanel;
+
+
     [SerializeField]
-    public Image itemFloatingIcon;
+    public ItemFloatingImage itemFloatingImageGO;
+    //[SerializeField]
+    //public Image itemTransferImage;
+
+
     [SerializeField]
     public GameObject itemInformationPanel;
     [SerializeField]
@@ -30,6 +36,8 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
     public TextMeshProUGUI itemStatsText;
     [SerializeField]
     public TextMeshProUGUI itemStatsNumbersText;
+
+
     [SerializeField]
     public UISlotsBase uiSlotReference;
 
@@ -88,14 +96,34 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
         EventManager.instance.onItemPickup();
     }
 
+    //public void AddToCharacterSlotOnTransfer(CharacterSlot uICharacterSlot, Item item)
+    //{
+    //    uICharacterSlot.storedItem = item;
+    //    EventManager.instance.onItemPickup();
+    //}
+        
+
+
     public void RemoveFromInventorySlot(UISlotsBase uISlotsBase)
     {
         uISlotsBase.storedItem = null;
     }
 
+    public void OnGrabbingItem()
+    {
+        
+        this.itemFloatingImageGO.hasBeenEnabled = true;
+        this.itemFloatingImageGO.gameObject.SetActive(true);
+    }
+
+    public void OnPuttingItem()
+    {
+        this.itemFloatingImageGO.hasBeenEnabled = false;
+    }
+
     public void OnItemRemoved()
     {
-        for (int i = 0; i < InventoryManager.instance.inventoryList.Count; i++)
+        for (int i = 0; i < this.listOfinventorySlots.Count; i++)//(int i = 0; i < InventoryManager.instance.inventoryList.Count; i++)
         {
             if (listOfinventorySlots[i].storedItem == null)
             {
