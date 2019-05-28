@@ -25,36 +25,16 @@ public class CharacterEquipmentManager : MonoBehaviour
 
     public void AddToCharacterEquipmentList(Item item)
     {
-        //if (characterSlotsList.Count < _inventoryCapacity)
-        //{
-        //    this.isFull = false;
-        //    this.inventoryList.Add(item);
-        //    //UIManager.instance.AddToInventorySlotOnPickup(item);
-
-        //    ////OrganizeInventoryList();
-
-        //    //EventManager.instance.onItemPickup();
-        //}
-        //else
-        //{
-        //    Debug.Log("Inventory is Full");
-        //    this.isFull = true;
-        //}
-
         characterEquipmentList.Add(item);
-
     }
 
     public void RemoveFromEquipmentList(Item item)
     {
         this.characterEquipmentList.Remove(item);
-        //OrganizeInventoryList();
     }
 
     public void OnItemRemovedFromCharacterEquipment()
     {
-        //List<CharacterSlot> characterSlotsList = new List<CharacterSlot>();
-        //characterSlotsList.AddRange(UIManager.instance.inventorySpace.GetComponentsInChildren<CharacterSlot>());
         for (int i = 0; i < characterSlotsList.Count; i++)
         {
             if (characterSlotsList[i].storedItem == null)

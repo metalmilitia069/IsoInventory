@@ -18,14 +18,4 @@ public class Player : MonoBehaviour
     {
         
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-
-    //    Debug.Log("blablablabla");
-    //    if(other.GetComponent<Item>())
-    //    {
-    //        Debug.Log("pega o item");
-    //    }
-    //}
 }

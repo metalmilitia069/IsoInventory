@@ -74,23 +74,7 @@ public class UISlotsBase : MonoBehaviour
             this.itemCategory = this.storedItem.itemCategory.ToString();
             this.itemPieceType = this.storedItem.itemPieceType.ToString();
         }
-    }
-
-    //public void OnItemRemoved()//(InventorySlot inventorySlot)
-    //{
-    //    if (this.storedItem == null)
-    //    {
-    //        this.itemName = null;
-    //        this.itemNameFloatText = null;
-    //        this.attackDamage = 0;
-    //        this.criticalChance = 0;
-    //        this.elementalDamage = null;
-    //        this.itemIcon.sprite = null;
-    //        this.itemIcon.color = new Color(161.0f / 255, 87.0f / 255, 87.0f / 255, 255.0f / 255);
-    //        this.itemCategory = "";
-    //        this.itemPieceType = "";
-    //    }
-    //}
+    }    
 
     private void SetInformationPanelReference()
     {        

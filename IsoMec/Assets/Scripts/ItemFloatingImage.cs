@@ -14,10 +14,10 @@ public class ItemFloatingImage : MonoBehaviour
     {        
         if (!this.hasBeenEnabled)
         {
+            Debug.Log("mozo");
             this.gameObject.SetActive(false);
             this.itemFloatingImage.sprite = null;
-            //Debug.Log("paradise");
-            //return;
+            return;
         }
         else if (this.hasBeenEnabled)
         {

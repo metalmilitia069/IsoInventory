@@ -26,11 +26,7 @@ public class Item : MonoBehaviour
     public string elementalDamage;
     [Header("Image Reference")]
     [SerializeField]
-    public Sprite itemIcon;
-    //[SerializeField]
-    //public Texture2D itemIconTransferImage;
-    //[SerializeField]
-    //private Player _playerReference;
+    public Sprite itemIcon;    
     
     [SerializeField]
     private bool _isPickable = false;
@@ -149,12 +145,9 @@ public class Item : MonoBehaviour
                 UIManager.instance.AddToInventorySlotOnPickup(this);
                 EventManager.instance.onItemPickup();
 
-
                 if (InventoryManager.instance.isFull == false)
                 {
                     this.gameObject.SetActive(false);
-                    //Destroy(this.gameObject);
-                    //InventoryManager.instance.onInventoryPickup();
                 }
                 else
                 {

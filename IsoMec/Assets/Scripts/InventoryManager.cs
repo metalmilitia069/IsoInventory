@@ -28,22 +28,14 @@ public class InventoryManager : MonoBehaviour
         if (inventoryList.Count < _inventoryCapacity)
         {
             this.isFull = false;
-            this.inventoryList.Add(item);
-            //UIManager.instance.AddToInventorySlotOnPickup(item);
-
-            ////OrganizeInventoryList();
-
-            //EventManager.instance.onItemPickup();
+            this.inventoryList.Add(item);            
         }
         else
         {
             Debug.Log("Inventory is Full");
             this.isFull = true;
         }
-
     }
-
-
 
     public void OrganizeInventoryList()
     {
@@ -55,17 +47,13 @@ public class InventoryManager : MonoBehaviour
             {
                 this.inventoryList.Add(UIManager.instance.listOfinventorySlots[i].storedItem);                
             }
-        }
-        for (int i = 0; i < UIManager.instance.listOfinventorySlots.Count; i++)
-        {
             UIManager.instance.RemoveFromInventorySlot(UIManager.instance.listOfinventorySlots[i]);
-        }
+        }        
 
         UIManager.instance.OnItemRemoved();
 
         for (int i = 0; i < this.inventoryList.Count; i++)
         {
-
             UIManager.instance.AddToInventorySlotOnPickup(this.inventoryList[i]);
         }
         EventManager.instance.onItemPickup();
@@ -73,8 +61,7 @@ public class InventoryManager : MonoBehaviour
 
     public void RemoveFromInventory(Item item)
     {
-        this.inventoryList.Remove(item);
-        //OrganizeInventoryList();
+        this.inventoryList.Remove(item);        
     }
 
     //EXAMPLE OF EVENTS / DELEGATES
