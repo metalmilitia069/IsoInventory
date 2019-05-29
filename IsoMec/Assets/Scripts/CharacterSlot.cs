@@ -18,4 +18,37 @@ public class CharacterSlot : UISlotsBase, IPointerEnterHandler, IPointerExitHand
     {
         base.HideItemStats();
     }
+
+    [Header("Slot Type: ")]
+    public SlotCategory slotCategory;
+    public SlotItemPieceType slotItemPieceType;
+
+    public enum SlotCategory
+    {
+        Armor,
+        Weapon,
+        Shield,
+        Acessories,
+        Booster,
+        Currency,
+        Health,
+        Magic,
+        Stamina,
+        Material
+    }
+
+    public enum SlotItemPieceType
+    {
+        Helmet,
+        Chest,
+        Belt,
+        Pants,
+        Boots,
+        Weapon,
+        Shield,
+        Earings,
+        Necklace,
+        Rings,
+        None
+    }
 }

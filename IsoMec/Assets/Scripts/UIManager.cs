@@ -92,8 +92,7 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
     }
 
     public void OnGrabbingItem()
-    {
-        
+    {        
         this.itemFloatingImageGO.hasBeenEnabled = true;
         this.itemFloatingImageGO.gameObject.SetActive(true);
     }

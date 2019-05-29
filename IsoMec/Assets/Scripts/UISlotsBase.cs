@@ -102,12 +102,10 @@ public class UISlotsBase : MonoBehaviour
 
     public void TransferItem()
     {
+        //grab item
         if (this.storedItem != null && InventoryManager.instance.ItemTransfer == null)
-        {            
-            this.itemIcon.color = Color.gray;
-            InventoryManager.instance.ItemTransfer = this.storedItem;
-            UIManager.instance.uiSlotReference = this;
-            UIManager.instance.OnGrabbingItem();
+        {
+            GrabItem();
             return;
         }
         if (this.storedItem != null && InventoryManager.instance.ItemTransfer != null)
@@ -115,60 +113,115 @@ public class UISlotsBase : MonoBehaviour
             //putting back an item
             if (this == UIManager.instance.uiSlotReference)
             {
-                this.itemIcon.color = Color.white;
-                InventoryManager.instance.ItemTransfer = null;
-                UIManager.instance.uiSlotReference = null;
-                UIManager.instance.OnPuttingItem();
+                PutItemBack();
                 return;
             }
             //swap items
             if (this != UIManager.instance.uiSlotReference)
             {
-                InventoryManager.instance.RemoveFromInventory(UIManager.instance.uiSlotReference.storedItem);
-                CharacterEquipmentManager.instance.RemoveFromEquipmentList(UIManager.instance.uiSlotReference.storedItem);
-                Item item = InventoryManager.instance.ItemTransfer;
-                InventoryManager.instance.ItemTransfer = this.storedItem;
-                InventoryManager.instance.RemoveFromInventory(this.storedItem);
-                InventoryManager.instance.RemoveFromInventory(UIManager.instance.uiSlotReference.storedItem);
-                CharacterEquipmentManager.instance.RemoveFromEquipmentList(this.storedItem);
-                CharacterEquipmentManager.instance.RemoveFromEquipmentList(UIManager.instance.uiSlotReference.storedItem);
-                UIManager.instance.RemoveFromInventorySlot(UIManager.instance.uiSlotReference);
-                UIManager.instance.OnItemRemoved();
-                CharacterEquipmentManager.instance.OnItemRemovedFromCharacterEquipment();
-                UIManager.instance.AddToInventorySlotOnTransfer(this, item);
                 if (this is CharacterSlot)
-                {
-                    CharacterEquipmentManager.instance.AddToCharacterEquipmentList(item);//
+                {                    
+                    CharacterSlot characterSlot = GetComponent<CharacterSlot>();
+                    if (characterSlot.slotItemPieceType.ToString() != InventoryManager.instance.ItemTransfer.itemPieceType.ToString())
+                    {
+                        Debug.Log("Wrong Slot!!!!");
+                    }
+                    else
+                    {
+                        SwapItems();
+                    }
                 }
-                else if (this is InventorySlot)
+                else
                 {
-                    InventoryManager.instance.AddToInventory(item);//
-                }                
-                UIManager.instance.OnGrabbingItem();
+                    SwapItems();
+                }
+                //SwapItems();
                 return;
             }
         }
         //putting on empty slot
         if (this.storedItem == null && InventoryManager.instance.ItemTransfer != null)
         {
-            InventoryManager.instance.RemoveFromInventory(InventoryManager.instance.ItemTransfer);
-            CharacterEquipmentManager.instance.RemoveFromEquipmentList(InventoryManager.instance.ItemTransfer);
-            UIManager.instance.RemoveFromInventorySlot(UIManager.instance.uiSlotReference);
-            UIManager.instance.OnItemRemoved();
-            CharacterEquipmentManager.instance.OnItemRemovedFromCharacterEquipment();
-            UIManager.instance.AddToInventorySlotOnTransfer(this, InventoryManager.instance.ItemTransfer);            
-            InventoryManager.instance.ItemTransfer = null;
-            if (this is InventorySlot)
+            if (this is CharacterSlot)
             {
-                InventoryManager.instance.AddToInventory(this.storedItem);
+                CharacterSlot characterSlot = GetComponent<CharacterSlot>();
+                if (characterSlot.slotItemPieceType.ToString() != InventoryManager.instance.ItemTransfer.itemPieceType.ToString())
+                {
+                    Debug.Log("Wrong Slot!!!!");
+                }
+                else
+                {
+                    PutItemOnEmptySlot();
+                }
             }
-            else if(this is CharacterSlot)
+            else
             {
-                CharacterEquipmentManager.instance.AddToCharacterEquipmentList(this.storedItem);
-            }            
-            UIManager.instance.OnItemRemoved();
-            UIManager.instance.OnPuttingItem();
-            return;            
+                PutItemOnEmptySlot();
+            }
+            //PutItemOnEmptySlot();
+            return;
         }
+    }
+
+    private void PutItemOnEmptySlot()
+    {
+        InventoryManager.instance.RemoveFromInventory(InventoryManager.instance.ItemTransfer);
+        CharacterEquipmentManager.instance.RemoveFromEquipmentList(InventoryManager.instance.ItemTransfer);
+        UIManager.instance.RemoveFromInventorySlot(UIManager.instance.uiSlotReference);
+        UIManager.instance.OnItemRemoved();
+        CharacterEquipmentManager.instance.OnItemRemovedFromCharacterEquipment();
+        UIManager.instance.AddToInventorySlotOnTransfer(this, InventoryManager.instance.ItemTransfer);
+        InventoryManager.instance.ItemTransfer = null;
+        if (this is InventorySlot)
+        {
+            InventoryManager.instance.AddToInventory(this.storedItem);
+        }
+        else if (this is CharacterSlot)
+        {
+            CharacterEquipmentManager.instance.AddToCharacterEquipmentList(this.storedItem);
+        }
+        UIManager.instance.OnItemRemoved();
+        UIManager.instance.OnPuttingItem();
+    }
+
+    private void SwapItems()
+    {
+        InventoryManager.instance.RemoveFromInventory(UIManager.instance.uiSlotReference.storedItem);
+        CharacterEquipmentManager.instance.RemoveFromEquipmentList(UIManager.instance.uiSlotReference.storedItem);
+        Item item = InventoryManager.instance.ItemTransfer;
+        InventoryManager.instance.ItemTransfer = this.storedItem;
+        InventoryManager.instance.RemoveFromInventory(this.storedItem);
+        InventoryManager.instance.RemoveFromInventory(UIManager.instance.uiSlotReference.storedItem);
+        CharacterEquipmentManager.instance.RemoveFromEquipmentList(this.storedItem);
+        CharacterEquipmentManager.instance.RemoveFromEquipmentList(UIManager.instance.uiSlotReference.storedItem);
+        UIManager.instance.RemoveFromInventorySlot(UIManager.instance.uiSlotReference);
+        UIManager.instance.OnItemRemoved();
+        CharacterEquipmentManager.instance.OnItemRemovedFromCharacterEquipment();
+        UIManager.instance.AddToInventorySlotOnTransfer(this, item);
+        if (this is CharacterSlot)
+        {
+            CharacterEquipmentManager.instance.AddToCharacterEquipmentList(item);//
+        }
+        else if (this is InventorySlot)
+        {
+            InventoryManager.instance.AddToInventory(item);//
+        }
+        UIManager.instance.OnGrabbingItem();
+    }
+
+    private void PutItemBack()
+    {
+        this.itemIcon.color = Color.white;
+        InventoryManager.instance.ItemTransfer = null;
+        UIManager.instance.uiSlotReference = null;
+        UIManager.instance.OnPuttingItem();
+    }
+
+    private void GrabItem()
+    {
+        this.itemIcon.color = Color.gray;
+        InventoryManager.instance.ItemTransfer = this.storedItem;
+        UIManager.instance.uiSlotReference = this;
+        UIManager.instance.OnGrabbingItem();
     }
 }

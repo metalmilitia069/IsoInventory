@@ -49,6 +49,7 @@ public class Item : MonoBehaviour
         Armor,
         Weapon,
         Shield,
+        Acessories,
         Booster,
         Currency,
         Health,

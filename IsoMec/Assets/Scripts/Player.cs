@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     public bool _canPick;
+    [SerializeField]
+    public float playerDropItemRadius = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,5 +19,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnDrawGizmos()
+    {
+        //Gizmos.DrawSphere(this.transform.position, playerDropItemRadius);
+        Gizmos.DrawWireSphere(this.transform.position, playerDropItemRadius);
     }
 }
