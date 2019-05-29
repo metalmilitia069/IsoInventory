@@ -26,8 +26,12 @@ public class Item : MonoBehaviour
     public string elementalDamage;
     [Header("Image Reference")]
     [SerializeField]
-    public Sprite itemIcon;    
-    
+    public Sprite itemIcon;
+
+    [Header("Item Configure")]
+    public bool isStackable = false;
+
+    [Header("Item States")]
     [SerializeField]
     private bool _isPickable = false;
     [SerializeField]
@@ -55,7 +59,7 @@ public class Item : MonoBehaviour
         Health,
         Magic,
         Stamina,
-        Material
+        Material        
     }
 
     public enum ItemPieceType
