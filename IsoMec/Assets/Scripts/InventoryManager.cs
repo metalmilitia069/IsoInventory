@@ -31,7 +31,15 @@ public class InventoryManager : MonoBehaviour
             {
                 if (item.itemName == stackableItem.itemName)
                 {
-                    stackableItem.itemCounter++;
+                    if (item.itemCounter > 1)
+                    {
+                        stackableItem.itemCounter += item.itemCounter;
+                    }
+                    else
+                    {
+                        stackableItem.itemCounter++;
+                    }
+                    
                     //Destroy(item.gameObject);
                     //break;
                     return;
