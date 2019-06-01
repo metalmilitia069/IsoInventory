@@ -30,6 +30,7 @@ public class Item : MonoBehaviour
 
     [Header("Item Configure")]
     public bool isStackable = false;
+    public int itemCounter = 1;
 
     [Header("Item States")]
     [SerializeField]
@@ -100,6 +101,8 @@ public class Item : MonoBehaviour
         
         itemNameFloatText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + _itemNameHeight, this.transform.position.z);
         itemNameFloatText.text = itemName;
+
+        this.itemCounter = 1;
     }
 
     // Update is called once per frame

@@ -70,6 +70,21 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
 
     public void AddToInventorySlotOnPickup(Item item)
     {
+        if (item.isStackable)
+        {
+            foreach (InventorySlot slot in listOfinventorySlots)
+            {
+                if (slot.storedItem != null)
+                {
+                    if (slot.storedItem.itemName == item.itemName)
+                    {
+                        Destroy(item.gameObject);
+                        return;
+                    }
+                    
+                }
+            }
+        }
         for (int i = 0; i < InventoryManager.instance.inventoryList.Count; i++)
         {
             if (listOfinventorySlots[i].storedItem == null)
@@ -116,7 +131,10 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
                 listOfinventorySlots[i].itemIcon.sprite = null;
                 listOfinventorySlots[i].itemIcon.color = new Color(161.0f / 255, 87.0f / 255, 87.0f / 255, 255.0f / 255);
                 listOfinventorySlots[i].itemCategory = "";
-                listOfinventorySlots[i].itemPieceType = "";                
+                listOfinventorySlots[i].itemPieceType = "";
+
+                listOfinventorySlots[i].itemQuantityText.text = "";
+                listOfinventorySlots[i].itemQuantityText.gameObject.SetActive(false);
             }
         }
     }

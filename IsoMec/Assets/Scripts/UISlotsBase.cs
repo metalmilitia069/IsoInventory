@@ -40,6 +40,8 @@ public class UISlotsBase : MonoBehaviour
     public TextMeshProUGUI itemStatsText;
     [SerializeField]
     public TextMeshProUGUI itemStatsNumbersText;
+    [SerializeField]
+    public TextMeshProUGUI itemQuantityText;
     [Header("Stored Item")]
     [SerializeField]
     public Item storedItem;
@@ -73,6 +75,12 @@ public class UISlotsBase : MonoBehaviour
             this.itemIcon.color = Color.white;
             this.itemCategory = this.storedItem.itemCategory.ToString();
             this.itemPieceType = this.storedItem.itemPieceType.ToString();
+
+            if (this.storedItem.isStackable)
+            {
+                this.itemQuantityText.gameObject.SetActive(true);
+                this.itemQuantityText.text = this.storedItem.itemCounter.ToString();
+            }
         }
     }    
 

@@ -25,8 +25,23 @@ public class InventoryManager : MonoBehaviour
 
     public void AddToInventory(Item item)
     {
+        if (item.isStackable)
+        {
+            foreach (Item stackableItem in this.inventoryList)
+            {
+                if (item.itemName == stackableItem.itemName)
+                {
+                    stackableItem.itemCounter++;
+                    //Destroy(item.gameObject);
+                    //break;
+                    return;
+                }
+            }
+            
+        }
         if (inventoryList.Count < _inventoryCapacity)
         {
+            //item.itemCounter++;
             this.isFull = false;
             this.inventoryList.Add(item);            
         }
