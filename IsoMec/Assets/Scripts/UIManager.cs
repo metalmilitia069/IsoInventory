@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-//using UnityEngine.Experimental.UIElements;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
@@ -18,78 +17,125 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
     }
 
     #endregion
-    [Header("Inventory UI Settings: ")]
+
     [SerializeField]
     private GameObject _inventoryPanel;
+
+    [SerializeField]
+    public ItemFloatingImage itemFloatingImageGO;
+
     [SerializeField]
     public GameObject itemInformationPanel;
     [SerializeField]
-    public TextMeshProUGUI _itemName;
+    public TextMeshProUGUI itemNameText;
     [SerializeField]
-    public TextMeshProUGUI _itemStatsText;
+    public TextMeshProUGUI itemStatsText;
     [SerializeField]
-    public TextMeshProUGUI _itemStatsTextNumbers;
-    [SerializeField]
-    public Image itemHoldImage;
-    [SerializeField]
-    public int transitionItemIndex;
-    [SerializeField]
-    public Item itemHoldObjectTransition;
-    [SerializeField]
-    public bool isOnTransition = false;
-    ////[HideInInspector]
-    //public InventorySlot inventorySlotTransition;
-    //[SerializeField]
-    //private GameObject _inventorySpace;
+    public TextMeshProUGUI itemStatsNumbersText;
 
 
-    //[SerializeField]
-    //private List<Button> _inventoryUIItems;
+    [SerializeField]
+    public UISlotsBase uiSlotReference;
 
-    //private int index;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    public GameObject inventorySpace;
+
+    public List<InventorySlot> listOfinventorySlots;
+
+    private void Update()
     {
-        //foreach (Button item in _inventorySpace.GetComponentsInChildren<Button>())
-        //{
-        //    _inventoryUIItems.Add(item);
-        //}
-        
+        OpenInventoryPanel();
     }
 
-    // Update is called once per frame
-    void Update()
-    {        
-        //foreach (Item item in InventoryManager.instance._inventoryList)
-        //{
-        //    GameObject butt = _inventoryUIItems[index].gameObject;
-        //    butt.GetComponentInChildren<Transform>().GetComponent<Image>().sprite = item.itemIconPlaceHolder;            
-        //}
-
-
-        this.InventorySwitch();
-
-        if(itemHoldImage.sprite != null)
-        {
-            UIManager.instance.itemHoldImage.transform.position = Input.mousePosition;
-        }
-    }
-
-    private void InventorySwitch()
+    private void OpenInventoryPanel()
     {
-        if (Input.GetButtonDown("InventoryButtom"))
+        if (Input.GetButtonDown("InventoryButton"))
         {
-            if (_inventoryPanel.activeSelf)
+            if (!this._inventoryPanel.activeSelf)
             {
-                _inventoryPanel.SetActive(false);
+                this._inventoryPanel.gameObject.SetActive(true);
             }
             else
             {
-                _inventoryPanel.SetActive(true);
+                this._inventoryPanel.gameObject.SetActive(false);
+            }
+        }
+    }
+        
+    private void Start()
+    {
+        listOfinventorySlots.AddRange(inventorySpace.GetComponentsInChildren<InventorySlot>());
+    }
+
+    public void AddToInventorySlotOnPickup(Item item)
+    {
+        if (item.isStackable)
+        {
+            foreach (InventorySlot slot in listOfinventorySlots)
+            {
+                if (slot.storedItem != null)
+                {
+                    if (slot.storedItem.itemName == item.itemName)
+                    {
+                        Destroy(item.gameObject);
+                        return;
+                    }
+                    
+                }
+            }
+        }
+        for (int i = 0; i < InventoryManager.instance.inventoryList.Count; i++)
+        {
+            if (listOfinventorySlots[i].storedItem == null)
+            {
+                listOfinventorySlots[i].storedItem = item;
+                break;
             }
         }
     }
 
-    
+    public void AddToInventorySlotOnTransfer(UISlotsBase uISlotsBase, Item item)
+    {
+        uISlotsBase.storedItem = item;
+        EventManager.instance.onItemPickup();
+    }
+        
+    public void RemoveFromInventorySlot(UISlotsBase uISlotsBase)
+    {
+        uISlotsBase.storedItem = null;
+    }
+
+    public void OnGrabbingItem()
+    {        
+        this.itemFloatingImageGO.hasBeenEnabled = true;
+        this.itemFloatingImageGO.gameObject.SetActive(true);
+    }
+
+    public void OnPuttingItem()
+    {
+        this.itemFloatingImageGO.hasBeenEnabled = false;
+    }
+
+    public void OnItemRemoved()
+    {
+        for (int i = 0; i < this.listOfinventorySlots.Count; i++)
+        {
+            if (listOfinventorySlots[i].storedItem == null)
+            {                
+                listOfinventorySlots[i].itemName = null;
+                listOfinventorySlots[i].itemNameFloatText = null;
+                listOfinventorySlots[i].attackDamage = 0;
+                listOfinventorySlots[i].criticalChance = 0;
+                listOfinventorySlots[i].elementalDamage = null;
+                listOfinventorySlots[i].itemIcon.sprite = null;
+                listOfinventorySlots[i].itemIcon.color = new Color(161.0f / 255, 87.0f / 255, 87.0f / 255, 255.0f / 255);
+                listOfinventorySlots[i].itemCategory = "";
+                listOfinventorySlots[i].itemPieceType = "";
+
+                listOfinventorySlots[i].itemQuantityText.text = "";
+                listOfinventorySlots[i].itemQuantityText.gameObject.SetActive(false);
+            }
+        }
+    }
 }

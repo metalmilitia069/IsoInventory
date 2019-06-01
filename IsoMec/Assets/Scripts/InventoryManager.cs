@@ -14,69 +14,83 @@ public class InventoryManager : MonoBehaviour
     }
 
     #endregion
+
+    public List<Item> inventoryList;
+    public bool isFull = false;
+
     [SerializeField]
-    public List<Item> _inventoryList;
-
-    public int inventoryCapacity;
-    public bool isfull = false;
-
-    public delegate void OnInventoryChange();
-    public OnInventoryChange onInventoryCleanup;
-
-    public delegate void OnEquipmentChange();
-    //public OnInventoryChange onEquipmentChange;
-    public OnEquipmentChange onEquipmentChange;
-
-    public delegate void OnInventoryPickup();
-    //public OnInventoryChange onInventoryPickup;
-    public OnInventoryPickup onInventoryPickup;
-
-    public delegate void OnInventoryUpdate();
-    //public OnInventoryChange onInventoryUpdate;
-    public OnInventoryUpdate onInventoryUpdate;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private int _inventoryCapacity;
+    [SerializeField]
+    public Item ItemTransfer;
 
     public void AddToInventory(Item item)
     {
-        if(_inventoryList.Count >= inventoryCapacity)
+        if (item.isStackable)
         {
-            Debug.Log("Inventory is Full!!!");
-            this.isfull = true;
+            foreach (Item stackableItem in this.inventoryList)
+            {
+                if (item.itemName == stackableItem.itemName)
+                {
+                    if (item.itemCounter > 1)
+                    {
+                        stackableItem.itemCounter += item.itemCounter;
+                    }
+                    else
+                    {
+                        stackableItem.itemCounter++;
+                    }
+                    
+                    //Destroy(item.gameObject);
+                    //break;
+                    return;
+                }
+            }
+            
+        }
+        if (inventoryList.Count < _inventoryCapacity)
+        {
+            //item.itemCounter++;
+            this.isFull = false;
+            this.inventoryList.Add(item);            
         }
         else
         {
-            this._inventoryList.Add(item);
-            this.isfull = false;
-
-            //////////////////////////////onInventoryChange();
-            //onInventoryPickup();
+            Debug.Log("Inventory is Full");
+            this.isFull = true;
         }
-        
     }
 
-    //public void RemoveFromInventory(int slotIndex)
+    public void OrganizeInventoryList()
+    {
+        this.inventoryList.Clear();
+
+        for (int i = 0; i < UIManager.instance.listOfinventorySlots.Count; i++)
+        {
+            if (UIManager.instance.listOfinventorySlots[i].storedItem != null)
+            {
+                this.inventoryList.Add(UIManager.instance.listOfinventorySlots[i].storedItem);                
+            }
+            UIManager.instance.RemoveFromInventorySlot(UIManager.instance.listOfinventorySlots[i]);
+        }        
+
+        UIManager.instance.OnItemRemoved();
+
+        for (int i = 0; i < this.inventoryList.Count; i++)
+        {
+            UIManager.instance.AddToInventorySlotOnPickup(this.inventoryList[i]);
+        }
+        EventManager.instance.onItemPickup();
+    }
+
     public void RemoveFromInventory(Item item)
     {
-        //this._inventoryList.RemoveAt(UIManager.instance.transitionItemIndex);
-        //this._inventoryList.RemoveAt(slotIndex);
-        this._inventoryList.Remove(item);
-
-        ////////////////////////////////////onInventoryChange();
+        this.inventoryList.Remove(item);        
     }
 
-    public void GetItemInformation()
-    {
+    //EXAMPLE OF EVENTS / DELEGATES
+    //public delegate void OnInventoryChange();
+    //public OnInventoryChange onInventoryCleanup;
+    //InventoryManager.instance.onInventoryCleanup += CleanupInventory;
 
-    }
+    
 }

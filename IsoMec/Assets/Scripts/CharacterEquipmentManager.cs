@@ -13,43 +13,43 @@ public class CharacterEquipmentManager : MonoBehaviour
     }
     #endregion
 
-    public delegate void OnCharacterEquipmentChange();
-    public OnCharacterEquipmentChange onCharacterEquipmentChange;
-
+    [SerializeField]
+    public List<CharacterSlot> characterSlotsList;
     [SerializeField]
     public List<Item> characterEquipmentList;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        characterSlotsList.AddRange(FindObjectsOfType<CharacterSlot>());
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddToCharacterEquipmentList(Item item)
     {
-        
+        characterEquipmentList.Add(item);
     }
 
-    public void AddToCharacterEquipment(Item item)
+    public void RemoveFromEquipmentList(Item item)
     {
-        this.characterEquipmentList.Add(item);
-        //InventoryManager.instance.onInventoryChange();//////////////////////////////////////////
-        
-    }
-
-    //public void RemoveFromCharacterEquipment(int index)
-    //{
-    //    this.characterEquipmentList.RemoveAt(index);
-    //    //this.characterEquipmentList.Remove()
-    //}
-
-    public void RemoveFromCharacterEquipment(Item item)
-    {
-        //this.characterEquipmentList.RemoveAt(index);
         this.characterEquipmentList.Remove(item);
+    }
 
-        //InventoryManager.instance.onInventoryChange();///////////////////////////////////////
+    public void OnItemRemovedFromCharacterEquipment()
+    {
+        for (int i = 0; i < characterSlotsList.Count; i++)
+        {
+            if (characterSlotsList[i].storedItem == null)
+            {                 
+                characterSlotsList[i].itemName = null;
+                characterSlotsList[i].itemNameFloatText = null;
+                characterSlotsList[i].attackDamage = 0;
+                characterSlotsList[i].criticalChance = 0;
+                characterSlotsList[i].elementalDamage = null;
+                characterSlotsList[i].itemIcon.sprite = null;
+                characterSlotsList[i].itemIcon.color = new Color(161.0f / 255, 87.0f / 255, 87.0f / 255, 255.0f / 255);
+                characterSlotsList[i].itemCategory = "";
+                characterSlotsList[i].itemPieceType = "";
+            }
+            
+        }
     }
 }
