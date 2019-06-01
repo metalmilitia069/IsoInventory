@@ -6,86 +6,66 @@ using UnityEngine.EventSystems;
 public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
-    private GameObject _playerReference;
+    private Player _playerReference;
+    [SerializeField]
+    public bool isDropAllowed = false;
 
-    private bool _lockDrop = true;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
-    }
-
-    //private RaycastHit hit;
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(this._lockDrop)
-        {
-            return;
-        }
-        if(Input.GetMouseButtonDown(0) && UIManager.instance.itemHoldObjectTransition)
-        {
-            Camera _mainCam = Camera.main;
-            Ray ray = _mainCam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, 300.0f))  //(ray, out hit, 100, movementLayer))
-            {
-                Debug.Log("dropar o item");
-                UIManager.instance.itemHoldObjectTransition.gameObject.SetActive(true);
-                UIManager.instance.itemHoldObjectTransition.transform.position = hit.point;
-
-                UIManager.instance.itemHoldImage.sprite = null;
-                UIManager.instance.itemHoldImage.gameObject.SetActive(false);
-
-                InventoryManager.instance.RemoveFromInventory(UIManager.instance.itemHoldObjectTransition);
-
-                UIManager.instance.itemHoldObjectTransition = null;
-                InventoryManager.instance.onInventoryUpdate();
-                this._lockDrop = true;
-            }
-
-
-        }
-
-        //Ray ray = _mainCam.ScreenPointToRay(Input.mousePosition);
-        //RaycastHit hit;
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    if (Physics.Raycast(ray, out hit, 100, movementLayer))
-        //    {
-        //        _agent.destination = hit.point;
-        //        _playerReference._canPick = false;
-        //    }
-
-        //    if (Physics.Raycast(ray, out hit, 100, interactLayer))
-        //    {
-        //        Debug.Log("Opa! peide nao!");
-        //        _playerReference._canPick = true;
-        //    }
-        //}
-        //Debug.DrawRay(ray.origin, ray.direction * 100, Color.cyan);
+        this._playerReference = FindObjectOfType<Player>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         _playerReference.GetComponent<PlayerMove>().enabled = false;
-        //Debug.Log("Mouse over UI");
-        this._lockDrop = true;
+        
+        this.isDropAllowed = false;
     }
 
-    public void OnPointerExit(PointerEventData eventData)//Problem Part >> TODO drop items from inventory!!!
+    public void OnPointerExit(PointerEventData eventData)
     {
         _playerReference.GetComponent<PlayerMove>().enabled = true;
+        
+        if (InventoryManager.instance.ItemTransfer != null)
+        {
+            isDropAllowed = true;
+        }
+    }
 
-        //if(Input.GetMouseButtonDown(0) && UIManager.instance.itemHoldObjectTransition)
-        //{
-        //    UIManager.instance.itemHoldObjectTransition.gameObject.SetActive(true);
-        //    UIManager.instance.itemHoldObjectTransition.transform.position = Input.mousePosition;
-        //}
-        this._lockDrop = false;
+    private void Update()
+    {
+        if (!isDropAllowed)
+        {
+            return;
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                _playerReference.GetComponent<PlayerMove>().enabled = false;
+
+                InventoryManager.instance.RemoveFromInventory(InventoryManager.instance.ItemTransfer);
+                CharacterEquipmentManager.instance.RemoveFromEquipmentList(InventoryManager.instance.ItemTransfer);
+                
+                InventoryManager.instance.ItemTransfer.gameObject.SetActive(true);
+                float randomX = Random.Range(-_playerReference.playerDropItemRadius, _playerReference.playerDropItemRadius);
+                float randomZ = Random.Range(-_playerReference.playerDropItemRadius, _playerReference.playerDropItemRadius);
+                InventoryManager.instance.ItemTransfer.transform.position = new Vector3(_playerReference.transform.position.x + randomX, 5.0f, _playerReference.transform.position.z + randomZ);                
+
+                UIManager.instance.uiSlotReference.storedItem = null;
+
+                UIManager.instance.OnItemRemoved();
+                CharacterEquipmentManager.instance.OnItemRemovedFromCharacterEquipment();                
+
+                InventoryManager.instance.ItemTransfer = null;
+                UIManager.instance.uiSlotReference = null;
+                UIManager.instance.itemFloatingImageGO.hasBeenEnabled = false;
+                
+                this.isDropAllowed = false;
+
+                _playerReference.GetComponent<PlayerMove>().enabled = true;
+            }
+        }
     }
 
 
