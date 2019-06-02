@@ -149,18 +149,18 @@ public class Item : MonoBehaviour
             {
                 //Debug.Log("Catching The Item");
                 
-                InventoryManager.instance.AddToInventory(this);
-                UIManager.instance.AddToInventorySlotOnPickup(this);
-                EventManager.instance.onItemPickup();
+                //InventoryManager.instance.AddToInventory(this);
+                //UIManager.instance.AddToInventorySlotOnPickup(this);
+                //EventManager.instance.onItemPickup();
 
-                if (InventoryManager.instance.isFull == false)
-                {
-                    this.gameObject.SetActive(false);
-                }
-                else
-                {
-                    this._isPickable = false;
-                }
+                //if (InventoryManager.instance.isFull == false)
+                //{
+                //    this.gameObject.SetActive(false);
+                //}
+                //else
+                //{
+                //    this._isPickable = false;
+                //}
 
             }            
         }
