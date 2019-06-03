@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UISlotsBase : MonoBehaviour
+public class UISlotsBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Item Name Floating Text")]
     //[Multiline(8)]
@@ -45,6 +46,13 @@ public class UISlotsBase : MonoBehaviour
     [Header("Stored Item")]
     [SerializeField]
     public Item storedItem;
+
+    [Header("MOUSE ROVER DETECTION")]    
+    [SerializeField]
+    public Image[] cellImage;
+    [Space]
+    [Header("INVENTORY CELL COORDINATES")]
+    public Vector2 cellSlotCoordinates;
 
 
 
@@ -113,5 +121,34 @@ public class UISlotsBase : MonoBehaviour
         
     }
 
-    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ShadeSlot();
+    }
+
+    public void ShadeSlot()
+    {
+        for (int i = 0; i < cellImage.Length; i++)
+        {
+            cellImage[i].color = Color.green;
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        UnshadeSlot();
+        //for (int i = 0; i < UIManager.instance.listOfinventorySlots.Capacity; i++)
+        //{
+        //    UIManager.instance.listOfinventorySlots[i].UnshadeSlot();
+        //}
+    }
+
+    public void UnshadeSlot()
+    {
+        for (int i = 0; i < cellImage.Length; i++)
+        {
+            cellImage[i].color = new Color(1, 1, 1, 100 / 255f);
+        }
+
+    }
 }

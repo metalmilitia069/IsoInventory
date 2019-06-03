@@ -8,20 +8,21 @@ using UnityEngine.UI;
 public class InventorySlot : UISlotsBase, IPointerEnterHandler, IPointerExitHandler
 {
     //public GameObject lalagameObject;
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if(this.storedItem != null)
-        {
-            base.ShowItemStats();
-        }        
-    }
+    //public void OnPointerEnter(PointerEventData eventData)
+    //{
+    //    if(this.storedItem != null)
+    //    {
+    //        base.ShowItemStats();
+            
+    //    }        
+    //}
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        base.HideItemStats();
-        //Instantiate(gameObject, this.transform.position, Quaternion.identity);
+    //public void OnPointerExit(PointerEventData eventData)
+    //{
+    //    base.HideItemStats();
+    //    //Instantiate(gameObject, this.transform.position, Quaternion.identity);
         
-    }
+    //}
 
     private void Start()
     {

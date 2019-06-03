@@ -30,7 +30,7 @@ RectTransform:
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 6033805501474467441}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -110,7 +110,7 @@ RectTransform:
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_Children: []
   m_Father: {fileID: 6033805501474467441}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 1, y: 1}
@@ -166,7 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c077fa69268674a9a4dcbb9ffbb9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellImage: {fileID: 6033805501302439013}
+  quadNumber: 2
+  itemSize: {x: 0, y: 0}
+  thisSlot: {fileID: 6033805501474467440}
 --- !u!1 &6033805501346028934
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +200,7 @@ RectTransform:
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_Children: []
   m_Father: {fileID: 6033805501474467441}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -254,7 +256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c077fa69268674a9a4dcbb9ffbb9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellImage: {fileID: 6033805501346028932}
+  quadNumber: 3
+  itemSize: {x: 0, y: 0}
+  thisSlot: {fileID: 6033805501474467440}
 --- !u!1 &6033805501474467442
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,11 +291,11 @@ RectTransform:
   - {fileID: 6033805501943886114}
   - {fileID: 6033805503062962431}
   - {fileID: 6033805501796707931}
-  - {fileID: 1005061312}
   - {fileID: 6033805501781639097}
   - {fileID: 6033805501302439014}
   - {fileID: 6033805501346028933}
   - {fileID: 6033805502611385719}
+  - {fileID: 1005061312}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -326,6 +330,12 @@ MonoBehaviour:
   itemStatsNumbersText: {fileID: 0}
   itemQuantityText: {fileID: 0}
   storedItem: {fileID: 0}
+  cellImage:
+  - {fileID: 6033805501781639096}
+  - {fileID: 6033805501302439013}
+  - {fileID: 6033805501346028932}
+  - {fileID: 6033805502611385718}
+  cellSlotCoordinates: {x: 0, y: 0}
 --- !u!1 &6033805501781639098
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +367,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6033805501474467441}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -413,7 +423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c077fa69268674a9a4dcbb9ffbb9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellImage: {fileID: 6033805501781639096}
+  quadNumber: 1
+  itemSize: {x: 0, y: 0}
+  thisSlot: {fileID: 6033805501474467440}
 --- !u!1 &6033805501796707932
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +527,7 @@ RectTransform:
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_Children: []
   m_Father: {fileID: 6033805501474467441}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -571,7 +583,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c077fa69268674a9a4dcbb9ffbb9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellImage: {fileID: 6033805502611385718}
+  quadNumber: 4
+  itemSize: {x: 0, y: 0}
+  thisSlot: {fileID: 6033805501474467440}
 --- !u!1 &6033805502770541055
 GameObject:
   m_ObjectHideFlags: 0

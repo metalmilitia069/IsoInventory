@@ -44,6 +44,7 @@ public class InventorySpace : MonoBehaviour
                 cellInstance.name = $"Slot[{i},{j}]";
                 cellInstance.transform.localScale = Vector3.one;
                 cellInstance.GetComponentInChildren<Text>().text = cellInstance.name;
+                cellInstance.GetComponent<InventorySlot>().cellSlotCoordinates = new Vector2(i, j);
             }
 
             

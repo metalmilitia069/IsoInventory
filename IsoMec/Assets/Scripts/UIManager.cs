@@ -41,7 +41,17 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
     [SerializeField]
     public GameObject inventorySpace;
 
-    public List<InventorySlot> listOfinventorySlots;
+    //[Header("INVENTORY UI")]
+    //public List<InventorySlot> listOfinventorySlots;
+
+    private void Start()
+    {
+        //listOfinventorySlots.AddRange(FindObjectsOfType<InventorySlot>());
+        
+    }
+
+
+
 
     private void Update()
     {
