@@ -14,8 +14,14 @@ public class InventoryManager : MonoBehaviour
     }
 
     #endregion
-
-    
-
+    [Header("Inventory Configuration",order = 0)]   
+    [SerializeField]
+    public int inventoryCapacity;
+    [Space]
+    [SerializeField]
+    public int numberOfColumns;
+    [Space]
+    [SerializeField]
+    public Vector2 cellSize;
     
 }

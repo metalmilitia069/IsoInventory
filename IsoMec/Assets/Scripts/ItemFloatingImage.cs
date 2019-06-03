@@ -12,6 +12,17 @@ public class ItemFloatingImage : MonoBehaviour
 
     private void Update()
     {        
+        if(this.hasBeenEnabled)
+        {
+            this.itemFloatingImage.gameObject.SetActive(true);
+            this.itemFloatingImage.transform.position = Input.mousePosition;
+        }
+    }
+
+    public void meopao()
+    {
+        Debug.Log("lalalala meopao");
+        itemFloatingImage.rectTransform.sizeDelta = new Vector2(30f, 30f);
         
     }
 }

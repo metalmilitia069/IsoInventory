@@ -102,10 +102,10 @@ public class UISlotsBase : MonoBehaviour
 
     public void HideItemStats()
     {
-        UIManager.instance.itemInformationPanel.gameObject.SetActive(false);
-        this.itemNameText.text = null;
-        this.itemStatsText.text = null;
-        this.itemStatsNumbersText.text = null; 
+        //UIManager.instance.itemInformationPanel.gameObject.SetActive(false);
+        //this.itemNameText.text = null;
+        //this.itemStatsText.text = null;
+        //this.itemStatsNumbersText.text = null; 
     }
 
     public void TransferItem()
