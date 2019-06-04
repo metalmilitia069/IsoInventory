@@ -18,7 +18,9 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField]
     public InventorySlot otherSlot;
     [SerializeField]
-    public InventorySlot[] otherSlots;
+    public List<InventorySlot> otherSlots;
+    [SerializeField]
+    public Vector2 nextSlotCoords;
     //[SerializeField]
     //public Vector2 maximumCoordenates;
 
@@ -30,27 +32,62 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 Debug.Log("Already highlighting this slot");
                 break;
             case 2:
-                for (int i = 0; i < InventoryUIManager.instance.listOfinventorySlots.Capacity; i++)
+                for (int i = 1; i <= itemSize.x; i++)//itemSize.x = 2
                 {
-                    //if (UIManager.instance.listOfinventorySlots[i].name == $"Slot[{thisSlot.cellSlotCoordinates.x},{thisSlot.cellSlotCoordinates.y + this.QuadrantRule().y}]")
-                    //{
-                    //    //UIManager.instance.listOfinventorySlots[i].ShadeSlot();
-                    //    otherSlot = UIManager.instance.listOfinventorySlots[i];
-                    //    otherSlot.ShadeSlot();
-                    //}
-
+                    nextSlotCoords = new Vector2(thisSlot.cellSlotCoordinates.x, thisSlot.cellSlotCoordinates.y - (this.QuadrantRule().y + (i * -this.QuadrantRule().y))); //FORMULA = COORD.Y - [(QuadRule.Y) + (i * -(QuadRule.Y))]
+                    if (nextSlotCoords.y > InventoryUIManager.instance.maximumCoordenates.y)//OR slot is taken//
+                    {
+                        Debug.Log("the slot does not exit!!!!");
+                        return;
+                    }
+                    string slotName = $"Slot[{nextSlotCoords.x},{nextSlotCoords.y}]";
+                    foreach (InventorySlot inventorySlot in InventoryUIManager.instance.listOfinventorySlots)
+                    {
+                        if (inventorySlot.name == slotName)
+                        {
+                            otherSlots.Add(inventorySlot);
+                            inventorySlot.ShadeSlot();
+                        }
+                    }
                 }
                 break;
             case 3:
-                for (int i = 0; i < InventoryUIManager.instance.listOfinventorySlots.Capacity; i++)
+                for (int i = 0; i < itemSize.x; i++)//itemSize.x = 3
                 {
-                    if (InventoryUIManager.instance.listOfinventorySlots[i].name == $"Slot[{thisSlot.cellSlotCoordinates.x},{thisSlot.cellSlotCoordinates.y + this.QuadrantRule().y}]")
+                    nextSlotCoords = new Vector2(thisSlot.cellSlotCoordinates.x, thisSlot.cellSlotCoordinates.y - (this.QuadrantRule().y + (i * -this.QuadrantRule().y)));
+                    if (nextSlotCoords.y > InventoryUIManager.instance.maximumCoordenates.y)//OR slot is taken//
                     {
-                        //UIManager.instance.listOfinventorySlots[i].ShadeSlot();
-                        otherSlot = InventoryUIManager.instance.listOfinventorySlots[i];
-                        otherSlot.ShadeSlot();
-                        FindObjectOfType<InventorySlot>().name = "mozo";
-                        
+                        Debug.Log("the slot does not exit!!!!");
+                        return;
+                    }
+                    string slotName = $"Slot[{nextSlotCoords.x},{nextSlotCoords.y}]";
+                    foreach (InventorySlot inventorySlot in InventoryUIManager.instance.listOfinventorySlots)
+                    {
+                        if (inventorySlot.name == slotName)
+                        {
+                            otherSlots.Add(inventorySlot);
+                            inventorySlot.ShadeSlot();
+                        }
+                    }
+                }
+                break;
+            case 4:
+                for (int i = 0; i < itemSize.x; i++)//itemSize.x = 4
+                {
+                    nextSlotCoords = new Vector2(thisSlot.cellSlotCoordinates.x, thisSlot.cellSlotCoordinates.y - (this.QuadrantRule().y + (i * -this.QuadrantRule().y)));
+                    if (nextSlotCoords.y > InventoryUIManager.instance.maximumCoordenates.y)//OR slot is taken//
+                    {
+                        Debug.Log("the slot does not exit!!!!");
+                        return;
+                    }
+                    string slotName = $"Slot[{nextSlotCoords.x},{nextSlotCoords.y}]";
+                    foreach (InventorySlot inventorySlot in InventoryUIManager.instance.listOfinventorySlots)
+                    {
+                        if (inventorySlot.name == slotName)
+                        {
+                            otherSlots.Add(inventorySlot);
+                            inventorySlot.ShadeSlot();
+                        }
                     }
                 }
                 break;
@@ -59,35 +96,98 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             default:
                 break;
         }
+        switch (itemSize.y)
+        {
+            case 1:
+                Debug.Log("Already highlighting this slot");
+                break;
+            case 2:
+                for (int i = 1; i <= itemSize.y; i++)//itemSize.y = 2
+                {
+                    nextSlotCoords = new Vector2(thisSlot.cellSlotCoordinates.x - (this.QuadrantRule().x + (i * -this.QuadrantRule().x)), thisSlot.cellSlotCoordinates.y); //FORMULA = COORD.Y - [(QuadRule.Y) + (i * -(QuadRule.Y))]
+                    if (nextSlotCoords.x > InventoryUIManager.instance.maximumCoordenates.x)//OR slot is taken//
+                    {
+                        Debug.Log("the slot does not exit!!!!");
+                        return;
+                    }
+                    string slotName = $"Slot[{nextSlotCoords.x},{nextSlotCoords.y}]";
+                    foreach (InventorySlot inventorySlot in InventoryUIManager.instance.listOfinventorySlots)
+                    {
+                        if (inventorySlot.name == slotName)
+                        {
+                            otherSlots.Add(inventorySlot);
+                            inventorySlot.ShadeSlot();
+                        }
+                    }
+                }
+                break;
+            case 3:
+                for (int i = 0; i < itemSize.y; i++)//itemSize.y = 2
+                {
+                    nextSlotCoords = new Vector2(thisSlot.cellSlotCoordinates.x - (this.QuadrantRule().x + (i * -this.QuadrantRule().x)), thisSlot.cellSlotCoordinates.y); //FORMULA = COORD.Y - [(QuadRule.Y) + (i * -(QuadRule.Y))]
+                    if (nextSlotCoords.x > InventoryUIManager.instance.maximumCoordenates.x)//OR slot is taken//
+                    {
+                        Debug.Log("the slot does not exit!!!!");
+                        return;
+                    }
+                    string slotName = $"Slot[{nextSlotCoords.x},{nextSlotCoords.y}]";
+                    foreach (InventorySlot inventorySlot in InventoryUIManager.instance.listOfinventorySlots)
+                    {
+                        if (inventorySlot.name == slotName)
+                        {
+                            otherSlots.Add(inventorySlot);
+                            inventorySlot.ShadeSlot();
+                        }
+                    }
+                }
+                break;
+            case 4:
+                for (int i = 0; i < itemSize.y; i++)//itemSize.y = 2
+                {
+                    nextSlotCoords = new Vector2(thisSlot.cellSlotCoordinates.x - (this.QuadrantRule().x + (i * -this.QuadrantRule().x)), thisSlot.cellSlotCoordinates.y); //FORMULA = COORD.Y - [(QuadRule.Y) + (i * -(QuadRule.Y))]
+                    if (nextSlotCoords.x > InventoryUIManager.instance.maximumCoordenates.x)//OR slot is taken//
+                    {
+                        Debug.Log("the slot does not exit!!!!");
+                        return;
+                    }
+                    string slotName = $"Slot[{nextSlotCoords.x},{nextSlotCoords.y}]";
+                    foreach (InventorySlot inventorySlot in InventoryUIManager.instance.listOfinventorySlots)
+                    {
+                        if (inventorySlot.name == slotName)
+                        {
+                            otherSlots.Add(inventorySlot);
+                            inventorySlot.ShadeSlot();
+                        }
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+        switch (itemSize.ToString())
+        {
+            case "(0.0, 0.0)":
+                Debug.Log("AIAIAAIAIAIA CARRAPATO NAO TEM PAI!!!!!!!!!!!");
+                break;
+            default:
+                break;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
-    {
-        //for (int i = 0; i < UIManager.instance.listOfinventorySlots.Capacity; i++)
-        //{           
-        //    UIManager.instance.listOfinventorySlots[i].UnshadeSlot();            
-        //}
-        //otherSlot.UnshadeSlot();
+    {        
+        foreach (InventorySlot inventorySlot in otherSlots)
+        {
+            inventorySlot.UnshadeSlot();
+        }
+        otherSlots.Clear();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         QuadrantRule();
-
-        //for (int i = 0; i < InventoryUIManager.instance.listOfinventorySlots.Capacity; i++)
-        //{
-        //    if (maximumCoordenates.x < InventoryUIManager.instance.listOfinventorySlots[i].cellSlotCoordinates.x)
-        //    {
-        //        maximumCoordenates.x = InventoryUIManager.instance.listOfinventorySlots[i].cellSlotCoordinates.x;
-        //        if (maximumCoordenates.y < InventoryUIManager.instance.listOfinventorySlots[i].cellSlotCoordinates.y)
-        //        {
-        //            maximumCoordenates.y = InventoryUIManager.instance.listOfinventorySlots[i].cellSlotCoordinates.y;
-        //            Debug.Log("repetindo adoidado");
-        //        }
-        //    }
-        //}
-
+        Debug.Log(itemSize.ToString());
     }
 
     // Update is called once per frame
@@ -103,9 +203,9 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             case 1:
                 return new Vector2(-1f,-1f);
             case 2:
-                return new Vector2(1f,1f);
+                return new Vector2(-1f,1f);
             case 3:
-                return new Vector2(-1f, -1f);
+                return new Vector2(1f, -1f);
             case 4:
                 return new Vector2(1f, 1f);
             default:

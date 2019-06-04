@@ -29,19 +29,7 @@ public class InventoryUIManager : MonoBehaviour
     
 
     private void CalculateMaximunCoordinates()
-    {
-        //for (int i = 0; i < UIManager.instance.listOfinventorySlots.Capacity; i++)
-        //{
-        //    if (maximumCoordenates.x < UIManager.instance.listOfinventorySlots[i].cellSlotCoordinates.x)
-        //    {
-        //        maximumCoordenates.x = UIManager.instance.listOfinventorySlots[i].cellSlotCoordinates.x;
-        //        if (maximumCoordenates.y < UIManager.instance.listOfinventorySlots[i].cellSlotCoordinates.y)
-        //        {
-        //            maximumCoordenates.y = UIManager.instance.listOfinventorySlots[i].cellSlotCoordinates.y;
-        //            Debug.Log("repetindo adoidado");
-        //        }
-        //    }
-        //}
+    {       
         for (int i = 0; i < listOfinventorySlots.Capacity; i++)
         {
             if (maximumCoordenates.x < listOfinventorySlots[i].cellSlotCoordinates.x)
@@ -60,6 +48,6 @@ public class InventoryUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //listOfinventorySlots.AddRange(FindObjectsOfType<InventorySlot>());
+        
     }
 }
