@@ -2581,6 +2581,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listOfinventorySlots: []
   maximumCoordenates: {x: 0, y: 0}
+  groupOfSelectedInventorySlots: []
+  ItemFloatingImage: {fileID: 1251233726}
 --- !u!4 &292609549
 Transform:
   m_ObjectHideFlags: 0
@@ -11585,7 +11587,7 @@ PrefabInstance:
     - target: {fileID: 6033805501474467441, guid: d03ca0d9002535f48962dfe06e25af75,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -87.24025
+      value: -87.30078
       objectReference: {fileID: 0}
     - target: {fileID: 6033805501474467441, guid: d03ca0d9002535f48962dfe06e25af75,
         type: 3}
@@ -11626,6 +11628,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1005061312, guid: d03ca0d9002535f48962dfe06e25af75, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.62000084
+      objectReference: {fileID: 0}
+    - target: {fileID: 1005061312, guid: d03ca0d9002535f48962dfe06e25af75, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.37000084
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03ca0d9002535f48962dfe06e25af75, type: 3}

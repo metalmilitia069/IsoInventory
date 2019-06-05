@@ -20,6 +20,13 @@ public class InventoryUIManager : MonoBehaviour
     public List<InventorySlot> listOfinventorySlots;
     [SerializeField]
     public Vector2 maximumCoordenates;
+    [SerializeField]
+    public List<InventorySlot> groupOfSelectedInventorySlots;
+
+
+    [Header("TEST!!!! DELETE LATER!!!")]
+    [SerializeField]
+    public ItemFloatingImage ItemFloatingImage;
 
     private void Start()
     {

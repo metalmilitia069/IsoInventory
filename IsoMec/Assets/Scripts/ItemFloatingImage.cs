@@ -22,7 +22,17 @@ public class ItemFloatingImage : MonoBehaviour
     public void meopao()
     {
         Debug.Log("lalalala meopao");
-        itemFloatingImage.rectTransform.sizeDelta = new Vector2(30f, 30f);
-        
+        //itemFloatingImage.rectTransform.sizeDelta = new Vector2(30f, 30f);
+        //this.transform.position = 
+        //foreach (InventorySlot inventorySlot in InventoryUIManager.instance.listOfinventorySlots)
+        //{
+        //    if (inventorySlot.name == "Slot[8,8]")
+        //    {
+        //        this.transform.position = inventorySlot.transform.position;
+        //        break;
+        //    }
+        //} 
+
+        //this.transform.position.x = 
     }
 }
