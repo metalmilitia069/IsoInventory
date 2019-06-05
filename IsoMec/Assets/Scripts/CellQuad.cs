@@ -15,12 +15,12 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public Vector2 itemSize;
     [SerializeField]
     public InventorySlot thisSlot;
-    [SerializeField]
-    public InventorySlot otherSlot;
-    [SerializeField]
-    public List<InventorySlot> otherSlots;
-    [SerializeField]
-    public Vector2 nextSlotCoords;
+    //[SerializeField]
+    //public InventorySlot otherSlot;
+    //[SerializeField]
+    //public List<InventorySlot> otherSlots;
+    //[SerializeField]
+    //public Vector2 nextSlotCoords;
     //[SerializeField]
     //public Vector2 maximumCoordenates;
     public List<float> xCoordComponents;
@@ -220,14 +220,14 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 {
                     if (inventorySlot.name == slotName)
                     {
-                        otherSlots.Add(inventorySlot);
+                        //otherSlots.Add(inventorySlot);
                         inventorySlot.ShadeSlot();
                         InventoryUIManager.instance.groupOfSelectedInventorySlots.Add(inventorySlot);
                     }
                 }
             }
         }
-
+        //xCoordComponents.Sort()
         //InventoryUIManager.instance.groupOfSelectedInventorySlots = otherSlots;
         //xCoordComponents.Clear();
         //yCoordComponents.Clear();
@@ -237,11 +237,11 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         xCoordComponents.Clear();
         yCoordComponents.Clear();
-        foreach (InventorySlot inventorySlot in otherSlots)
+        foreach (InventorySlot inventorySlot in InventoryUIManager.instance.groupOfSelectedInventorySlots)
         {
             inventorySlot.UnshadeSlot();
         }
-        otherSlots.Clear();
+        //otherSlots.Clear();
         InventoryUIManager.instance.groupOfSelectedInventorySlots.Clear();
     }
 

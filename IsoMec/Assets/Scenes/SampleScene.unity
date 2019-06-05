@@ -237,9 +237,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1480882084}
   - {fileID: 1640923352}
   - {fileID: 83400651}
-  - {fileID: 1480882084}
   - {fileID: 1601654707}
   - {fileID: 1777462557}
   - {fileID: 2019622524}
@@ -1001,6 +1001,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 97497b6a6d1a2574687988421a5f70f0, type: 3}
   isStackable: 0
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -1022,7 +1023,7 @@ Transform:
   - {fileID: 2058965110}
   - {fileID: 57477044}
   m_Father: {fileID: 14910365}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &83400652
 BoxCollider:
@@ -2501,6 +2502,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 2e9c6db6ea6d1814e83ab6130aaab1c1, type: 3}
   isStackable: 1
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -2582,7 +2584,7 @@ MonoBehaviour:
   listOfinventorySlots: []
   maximumCoordenates: {x: 0, y: 0}
   groupOfSelectedInventorySlots: []
-  ItemFloatingImage: {fileID: 1251233726}
+  itemUIButton: {fileID: 1998647176}
 --- !u!4 &292609549
 Transform:
   m_ObjectHideFlags: 0
@@ -2737,6 +2739,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: d53a7388eccbe43498402ad57b276aec, type: 3}
   isStackable: 0
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -2882,6 +2885,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8, type: 3}
   isStackable: 0
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -3950,6 +3954,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 2e9c6db6ea6d1814e83ab6130aaab1c1, type: 3}
   isStackable: 1
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -6072,6 +6077,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 2e9c6db6ea6d1814e83ab6130aaab1c1, type: 3}
   isStackable: 1
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -6201,8 +6207,8 @@ GameObject:
   - component: {fileID: 720335424}
   - component: {fileID: 720335428}
   m_Layer: 5
-  m_Name: UI
-  m_TagString: Untagged
+  m_Name: UICanvas
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6279,6 +6285,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 653325385}
+  - {fileID: 1998647175}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6836,6 +6843,145 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1523054282}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &883455283
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 720335427}
+    m_Modifications:
+    - target: {fileID: 5272644685239763381, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_Name
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 69.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -96
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498468361576697711, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699061584966552168, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.068494596
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699061584966552168, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.31132078
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699061584966552168, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.039649345
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 849712d5841679444a852cf07f9ec7b4, type: 3}
 --- !u!1 &884690774
 GameObject:
   m_ObjectHideFlags: 0
@@ -7675,6 +7821,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 2e9c6db6ea6d1814e83ab6130aaab1c1, type: 3}
   isStackable: 1
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -9501,6 +9648,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 97497b6a6d1a2574687988421a5f70f0, type: 3}
   isStackable: 0
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -9994,7 +10142,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 658541234}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1251233726}
+        m_MethodName: meopao
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1259031845
@@ -11208,7 +11367,7 @@ GameObject:
   - component: {fileID: 1480882086}
   - component: {fileID: 1480882085}
   m_Layer: 30
-  m_Name: sword
+  m_Name: chestOfTheDivine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11230,7 +11389,7 @@ Transform:
   - {fileID: 1806630727}
   - {fileID: 1918994544}
   m_Father: {fileID: 14910365}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1480882085
 BoxCollider:
@@ -11323,16 +11482,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f444a48c42019ae438999e79e797f48e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Emerald Sword +3
+  itemName: Chest of the Divine +3
   itemNameFloatText: {fileID: 1918994545}
   _itemNameHeight: 2.5
   attackDamage: 66
   attackRange: 443
   criticalChance: 544
   elementalDamage: FIRE
-  itemIcon: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8, type: 3}
+  itemIcon: {fileID: 21300000, guid: 98ca7ae9f6fbbe44ea4aa69f62aef992, type: 3}
   isStackable: 0
   itemCounter: 0
+  itemInventorySize: {x: 2, y: 3}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -11951,6 +12111,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 2e9c6db6ea6d1814e83ab6130aaab1c1, type: 3}
   isStackable: 1
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -12237,6 +12398,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8, type: 3}
   isStackable: 0
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -12848,6 +13010,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 97497b6a6d1a2574687988421a5f70f0, type: 3}
   isStackable: 0
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -12869,7 +13032,7 @@ Transform:
   - {fileID: 1279773106}
   - {fileID: 1190085142}
   m_Father: {fileID: 14910365}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1640923353
 Rigidbody:
@@ -13362,6 +13525,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 4fbabeea09aa7c844b4bd699077bc6f8, type: 3}
   isStackable: 0
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -15280,6 +15444,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998487153}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!224 &1998647175 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3055497756435134257, guid: 849712d5841679444a852cf07f9ec7b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 883455283}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1998647176 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2699061584966552168, guid: 849712d5841679444a852cf07f9ec7b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 883455283}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2017033094
 GameObject:
   m_ObjectHideFlags: 0
@@ -15420,6 +15602,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 97497b6a6d1a2574687988421a5f70f0, type: 3}
   isStackable: 0
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -15565,6 +15748,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 97497b6a6d1a2574687988421a5f70f0, type: 3}
   isStackable: 0
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -15999,6 +16183,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 2e9c6db6ea6d1814e83ab6130aaab1c1, type: 3}
   isStackable: 1
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
@@ -16144,6 +16329,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 2e9c6db6ea6d1814e83ab6130aaab1c1, type: 3}
   isStackable: 1
   itemCounter: 0
+  itemInventorySize: {x: 0, y: 0}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0

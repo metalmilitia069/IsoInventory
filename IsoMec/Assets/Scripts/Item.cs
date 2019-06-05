@@ -31,6 +31,7 @@ public class Item : MonoBehaviour
     [Header("Item Configure")]
     public bool isStackable = false;
     public int itemCounter = 1;
+    public Vector2 itemInventorySize;
 
     [Header("Item States")]
     [SerializeField]
@@ -82,6 +83,8 @@ public class Item : MonoBehaviour
     void Start()
     {
         InitializeItemParameters();
+
+
     }
 
     private void InitializeItemParameters()

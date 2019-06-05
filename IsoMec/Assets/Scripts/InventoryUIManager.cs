@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUIManager : MonoBehaviour
 {
@@ -26,12 +28,16 @@ public class InventoryUIManager : MonoBehaviour
 
     [Header("TEST!!!! DELETE LATER!!!")]
     [SerializeField]
-    public ItemFloatingImage ItemFloatingImage;
+    //public ItemFloatingImage ItemFloatingImage;
+    public Button itemUIButton;
 
     private void Start()
     {
         listOfinventorySlots.AddRange(FindObjectsOfType<InventorySlot>());
+        InventoryUIManager.instance.listOfinventorySlots = InventoryUIManager.instance.listOfinventorySlots.OrderBy(tile => tile.name).ToList();
+
         CalculateMaximunCoordinates();
+        itemUIButton.image.rectTransform.sizeDelta = new Vector2(30f, 45f);
     }
     
 
@@ -48,6 +54,28 @@ public class InventoryUIManager : MonoBehaviour
                     Debug.Log("repetindo adoidado");
                 }
             }
+        }
+    }
+
+    public void AddtoInventoryUI(Item item)
+    {
+        this.listOfinventorySlots.Sort();
+        int count = 0;
+        while (count < this.listOfinventorySlots.Count)
+        {
+            int k;
+            int l;
+            for (int i = 0; i < item.itemInventorySize.x; i++)
+            {
+                for (int j = 0; j < item.itemInventorySize.y; j++)
+                {
+                    //if (this.listOfinventorySlots)
+                    //{
+
+                    //}
+                }
+            }
+
         }
     }
 

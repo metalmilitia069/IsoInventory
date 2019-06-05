@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class ItemFloatingImage : MonoBehaviour
 {
@@ -32,6 +33,9 @@ public class ItemFloatingImage : MonoBehaviour
         //        break;
         //    }
         //} 
+        //InventoryUIManager.instance.listOfinventorySlots.Sort();
+        //tileList = tileList.OrderBy(tile => tile.Name).ToList();
+        InventoryUIManager.instance.listOfinventorySlots = InventoryUIManager.instance.listOfinventorySlots.OrderBy(tile => tile.name).ToList();
 
         //this.transform.position.x = 
     }

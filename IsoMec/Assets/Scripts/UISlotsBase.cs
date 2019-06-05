@@ -214,7 +214,7 @@ public class UISlotsBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
             //InventoryUIManager.instance.ItemFloatingImage.transform.position.x = centerX;
             //InventoryUIManager.instance.ItemFloatingImage.transform.position.y = centerY;
-            InventoryUIManager.instance.ItemFloatingImage.transform.position = new Vector3(centerX, centerY, 0);
+            InventoryUIManager.instance.itemUIButton.transform.position = new Vector3(centerX, centerY, 0);
         }
     }
 }
