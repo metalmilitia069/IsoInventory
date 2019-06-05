@@ -151,10 +151,14 @@ public class Item : MonoBehaviour
             if(other.GetComponent<Player>()._canPick && this._isPickable)
             {
                 //Debug.Log("Catching The Item");
-                
+
                 //InventoryManager.instance.AddToInventory(this);
                 //UIManager.instance.AddToInventorySlotOnPickup(this);
+                InventoryUIManager.instance.AddtoInventoryUI(this);
                 //EventManager.instance.onItemPickup();
+
+                this.gameObject.SetActive(false);
+
 
                 //if (InventoryManager.instance.isFull == false)
                 //{

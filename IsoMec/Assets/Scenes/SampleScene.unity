@@ -5645,6 +5645,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 292609548}
+        m_MethodName: CalculateMaximunCoordinates
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &684346169
@@ -6965,6 +6976,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3498468361576697711, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 98ca7ae9f6fbbe44ea4aa69f62aef992,
+        type: 3}
+    - target: {fileID: 3498468361576697711, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2699061584966552168, guid: 849712d5841679444a852cf07f9ec7b4,
         type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
@@ -6979,6 +7001,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0.039649345
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689163761304966474, guid: 849712d5841679444a852cf07f9ec7b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 849712d5841679444a852cf07f9ec7b4, type: 3}
