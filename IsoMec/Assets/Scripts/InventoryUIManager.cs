@@ -31,7 +31,7 @@ public class InventoryUIManager : MonoBehaviour
     [Header("TEST!!!! DELETE LATER!!!")]
     [SerializeField]
     //public ItemFloatingImage ItemFloatingImage;
-    public Button itemUIButton;
+    public Button itemUIButton; //TODO: GAMBIARRA!!!!!!!
 
     private void Start()
     {
@@ -70,29 +70,67 @@ public class InventoryUIManager : MonoBehaviour
         itemUIButton.image.rectTransform.sizeDelta = new Vector2(15f * item.itemInventorySize.x, 15f * item.itemInventorySize.y);
         //this.listOfinventorySlots.Sort();
         int count = 0;
-        while (count < this.listOfinventorySlots.Count)
+        //while (count < this.listOfinventorySlots.Count)
+        //{
+            //int k;
+            //int l;
+        //for (int w = 0; w < this.listOfinventorySlots.Count; w++)
+        //{
+        //    for (int i = 0; i < item.itemInventorySize.y; i++)//TODO: gambiarra!!!
+        //    {
+        //        for (int j = 0; j < item.itemInventorySize.x; j++)
+        //        {
+        //            k = ((i * 10) + (j * 1));
+        //            if (this.listOfinventorySlots[k].storedItem == null)
+        //            {
+        //                this.groupOfSelectedInventorySlots.Add(this.listOfinventorySlots[k]);
+        //            }
+        //            else
+        //            {
+
+        //            }
+        //        }
+
+        //    }
+        //}
+
+        int k = 0;
+        int l = 0;
+        int i = 0;
+        int j = 0;
+        int q = 0;
+
+        for (int w = 0; w < this.listOfinventorySlots.Count; w++)
         {
-            int k;
-            int l;
-            for (int i = 0; i < item.itemInventorySize.y; i++)
+            while (i < item.itemInventorySize.y + l)
             {
-                for (int j = 0; j < item.itemInventorySize.x; j++)
+                j = 0;
+                while (j < item.itemInventorySize.x + q)
                 {
                     k = ((i * 10) + (j * 1));
                     if (this.listOfinventorySlots[k].storedItem == null)
                     {
                         this.groupOfSelectedInventorySlots.Add(this.listOfinventorySlots[k]);
+                        this.listOfinventorySlots[k].storedItem = item;
+                        j++;
                     }
                     else
                     {
-
+                        this.groupOfSelectedInventorySlots.Clear();
+                        j++;
+                        q = j;
                     }
+                    //j++;
                 }
-
+                i++;
             }
-            break;
-
         }
+        
+
+
+       //break;
+
+        //}
         this.PutItemIconButtonIntoInventoryUI();
     }
 

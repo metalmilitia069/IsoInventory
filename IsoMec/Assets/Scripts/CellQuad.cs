@@ -249,7 +249,7 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     void Start()
     {
         QuadrantRule();
-        Debug.Log(itemSize.ToString());
+        //Debug.Log(itemSize.ToString());
     }
 
     // Update is called once per frame
