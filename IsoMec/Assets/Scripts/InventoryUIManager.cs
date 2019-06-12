@@ -196,7 +196,11 @@ public class InventoryUIManager : MonoBehaviour
                         //return;
                     }
                     else
-                    {                        
+                    {
+                        foreach (InventorySlot inventorySlot in groupOfSelectedInventorySlots)
+                        {
+                            inventorySlot.storedItem = null;
+                        }
                         this.groupOfSelectedInventorySlots.Clear();
                         done = false;
                         j = (int)item.itemInventorySize.x + q;
