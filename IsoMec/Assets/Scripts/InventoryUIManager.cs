@@ -32,6 +32,7 @@ public class InventoryUIManager : MonoBehaviour
     [SerializeField]
     //public ItemFloatingImage ItemFloatingImage;
     public Button itemUIButton; //TODO: GAMBIARRA!!!!!!!
+    bool done = false;
 
     private void Start()
     {
@@ -69,102 +70,13 @@ public class InventoryUIManager : MonoBehaviour
     public void AddtoInventoryUI(Item item)
     {
         itemUIButton.image.rectTransform.sizeDelta = new Vector2(15f * item.itemInventorySize.x, 15f * item.itemInventorySize.y);
-        //this.listOfinventorySlots.Sort();
-        int count = 0;
-        //while (count < this.listOfinventorySlots.Count)
-        //{
-            //int k;
-            //int l;
-        //for (int w = 0; w < this.listOfinventorySlots.Count; w++)
-        //{
-        //    for (int i = 0; i < item.itemInventorySize.y; i++)//TODO: gambiarra!!!
-        //    {
-        //        for (int j = 0; j < item.itemInventorySize.x; j++)
-        //        {
-        //            k = ((i * 10) + (j * 1));
-        //            if (this.listOfinventorySlots[k].storedItem == null)
-        //            {
-        //                this.groupOfSelectedInventorySlots.Add(this.listOfinventorySlots[k]);
-        //            }
-        //            else
-        //            {
-
-        //            }
-        //        }
-
-        //    }
-        //}
 
         int k = 0;
         int l = 0;
         int i = 0;
         int j = 0;
         int q = 0;
-        bool done = false;
-
-        //for (int w = 0; w < this.listOfinventorySlots.Count; w++)
-        //{            
-        //    j = 0;
-        //    while (i < item.itemInventorySize.y + l)
-        //    {
-        //        //q = j;
-        //        //if (!locked)
-        //        //{
-        //        //    j = 0;
-        //        //}
-        //        //j = 0;                
-        //        while (j < item.itemInventorySize.x + q)
-        //        {
-        //            k = ((i * 10) + (j * 1));
-        //            if (this.listOfinventorySlots[k].storedItem == null)
-        //            {
-        //                this.groupOfSelectedInventorySlots.Add(this.listOfinventorySlots[k]);
-        //                this.listOfinventorySlots[k].storedItem = item;
-        //                j++;
-        //                locked = false;
-        //                //return;
-        //            }
-        //            else
-        //            {
-        //                locked = true;
-        //                //i = (int)groupOfSelectedInventorySlots.First().cellSlotCoordinates.y;
-        //                //j = (int)groupOfSelectedInventorySlots.First().cellSlotCoordinates.x;
-        //                i = k / 10;
-        //                j = k % 10;
-        //                j++;
-        //                l = i;
-        //                q = j;
-        //                this.groupOfSelectedInventorySlots.Clear();
-
-
-
-        //                if (j > this.maximumCoordenates.x)
-        //                {
-        //                    j = 0;
-        //                    //l = i+ 1;
-        //                }
-        //                if (i > this.maximumCoordenates.y)
-        //                {
-        //                    Debug.Log("inventory is full");
-        //                    break;
-        //                }
-        //                break;
-        //                //i = k / 10;
-        //                //j = k % 10;
-
-        //                //j++;
-        //            }
-        //            //j++;
-        //        }
-        //        if (!locked)
-        //        {
-        //            i++;
-        //            //j = 0;
-        //        }
-
-        //        //l = i;
-        //    }
-        //}
+        done = false;        
 
         for (int w = 0; w < this.listOfinventorySlots.Count; w++)
         {
@@ -172,31 +84,37 @@ public class InventoryUIManager : MonoBehaviour
             {
                 break;
             }
-            j = w % 10;
-            i = w / 10;
+            
+            j = (int)listOfinventorySlots[w].cellSlotCoordinates.y;
+            i = (int)listOfinventorySlots[w].cellSlotCoordinates.x;
             q = j;
-            l = i;
-            if (j > this.maximumCoordenates.x)
-            {
-                j = 0;
-            }
+            l = i;            
 
             while (i < item.itemInventorySize.y + l)
-            {
-                j = w % 10;
+            {                
+                j = (int)listOfinventorySlots[w].cellSlotCoordinates.y;
+                
                 while (j < item.itemInventorySize.x + q)
                 {
-                    k = ((i * 10) + (j * 1));
+                    foreach (InventorySlot inventorySlot in listOfinventorySlots)
+                    {
+                        //if (inventorySlot.name == $"Slot[{i},{j}]")
+                        if(inventorySlot.cellSlotCoordinates == new Vector2(i,j))
+                        {
+                            k = this.listOfinventorySlots.IndexOf(inventorySlot);
+                            break;
+                        }
+                    }
                     if (this.listOfinventorySlots[k].storedItem == null)
                     {
                         this.groupOfSelectedInventorySlots.Add(this.listOfinventorySlots[k]);
                         this.listOfinventorySlots[k].storedItem = item;
                         j++;
                         done = true;
-                        //return;
                     }
                     else
                     {
+                        Debug.Log("chonga");
                         foreach (InventorySlot inventorySlot in groupOfSelectedInventorySlots)
                         {
                             inventorySlot.storedItem = null;
@@ -204,31 +122,22 @@ public class InventoryUIManager : MonoBehaviour
                         this.groupOfSelectedInventorySlots.Clear();
                         done = false;
                         j = (int)item.itemInventorySize.x + q;
-                        i = (int)item.itemInventorySize.y + l;
-                        //if (j > this.maximumCoordenates.x)
-                        //{
-                        //    j = 0;
-                        //    //l = i+ 1;
-                        //}
-                        if (i > this.maximumCoordenates.y)
-                        {
-                            Debug.Log("inventory is full");
-                            break;
-                        }
-                        break;                       
-                    }
-                    //j++;
+                        i = (int)item.itemInventorySize.y + l;                                             
+                    }                    
                 }
                 i++;
             }
         }
 
-
-
-        //break;
-
-        //}
-        this.PutItemIconButtonIntoInventoryUI();
+        if (groupOfSelectedInventorySlots.Count == 0)
+        {
+            Debug.Log("Inventory is Full!");
+            item.PickableItem = false;            
+        }
+        else
+        {
+            this.PutItemIconButtonIntoInventoryUI();
+        }
     }
 
     public void PutItemIconButtonIntoInventoryUI()
@@ -252,6 +161,7 @@ public class InventoryUIManager : MonoBehaviour
             //InventoryUIManager.instance.ItemFloatingImage.transform.position.x = centerX;
             //InventoryUIManager.instance.ItemFloatingImage.transform.position.y = centerY;
             InventoryUIManager.instance.itemUIButton.transform.position = new Vector3(centerX, centerY, 0);
+            this.groupOfSelectedInventorySlots[0].storedItem.gameObject.SetActive(false);
         }
     }
 

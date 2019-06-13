@@ -157,7 +157,7 @@ public class Item : MonoBehaviour
                 InventoryUIManager.instance.AddtoInventoryUI(this);
                 //EventManager.instance.onItemPickup();
 
-                this.gameObject.SetActive(false);
+                //this.gameObject.SetActive(false);
 
 
                 //if (InventoryManager.instance.isFull == false)
