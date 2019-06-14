@@ -26,13 +26,13 @@ public class InventoryUIManager : MonoBehaviour
     public List<InventorySlot> groupOfSelectedInventorySlots;
     [SerializeField]
     public Dictionary<Vector2, InventorySlot> dictionaryOfInventorySlots;
-
-
-    [Header("TEST!!!! DELETE LATER!!!")]
+    [Space]    
     [SerializeField]
-    //public ItemFloatingImage ItemFloatingImage;
-    public Button itemUIButton; //TODO: GAMBIARRA!!!!!!!
+    public Button itemButtonReference;
+    [SerializeField]
+    public 
     bool done = false;
+    public bool canGrabButton = false;
 
     private void Start()
     {
@@ -68,8 +68,9 @@ public class InventoryUIManager : MonoBehaviour
     }
 
     public void AddtoInventoryUI(Item item)
-    {
-        itemUIButton.image.rectTransform.sizeDelta = new Vector2(15f * item.itemInventorySize.x, 15f * item.itemInventorySize.y);
+    {        
+        itemButtonReference = item.GetComponentInChildren<Button>();
+        itemButtonReference.image.rectTransform.sizeDelta = new Vector2(InventoryManager.instance.cellSize.x * item.itemInventorySize.x, InventoryManager.instance.cellSize.y * item.itemInventorySize.y);       
 
         int k = 0;
         int l = 0;
@@ -157,18 +158,37 @@ public class InventoryUIManager : MonoBehaviour
             }
             centerX = x / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
             centerY = y / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
+                        
+            itemButtonReference.transform.position = new Vector3(centerX, centerY, 0);
+            
+            itemButtonReference.transform.parent = UIManager.instance.inventoryPanel.transform;
+            itemButtonReference.transform.localScale = Vector3.one;
+            itemButtonReference = null;
 
-            //InventoryUIManager.instance.ItemFloatingImage.transform.position.x = centerX;
-            //InventoryUIManager.instance.ItemFloatingImage.transform.position.y = centerY;
-            InventoryUIManager.instance.itemUIButton.transform.position = new Vector3(centerX, centerY, 0);
-            this.groupOfSelectedInventorySlots[0].storedItem.gameObject.SetActive(false);
+            if (groupOfSelectedInventorySlots[0].storedItem != null)
+            {
+                this.groupOfSelectedInventorySlots[0].storedItem.gameObject.SetActive(false);
+            }
+            
+            this.groupOfSelectedInventorySlots.Clear();
         }
     }
 
+    public void GrabItemIconButtonFromInvenroty()
+    {
+        if (!this.canGrabButton)
+        {
+            return;
+        }
+        else
+        {
+            itemButtonReference.transform.position = Input.mousePosition;
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
-        
+        GrabItemIconButtonFromInvenroty();
     }
 }

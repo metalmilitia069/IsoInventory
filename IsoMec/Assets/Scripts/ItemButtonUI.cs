@@ -23,4 +23,11 @@ public class ItemButtonUI : MonoBehaviour
     {
         
     }
+
+    public void GrabItemButton()
+    {
+        InventoryUIManager.instance.itemButtonReference = this.GetComponent<Button>();
+        InventoryUIManager.instance.canGrabButton = true;
+        InventoryUIManager.instance.itemButtonReference.image.raycastTarget = false;
+    }
 }

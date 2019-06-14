@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     //[SerializeField]
     //public Image cellImage;
@@ -26,160 +26,29 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public List<float> xCoordComponents;
     public List<float> yCoordComponents;
 
+    public Item storedItem;
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //switch (itemSize.x)
+        //if (thisSlot.storedItem == null)
         //{
-        //    case 1:
-        //        Debug.Log("Already highlighting this slot");
-        //        break;
-        //    case 2:
-        //        for (int i = 1; i <= itemSize.x; i++)//itemSize.x = 2
-        //        {
-        //            nextSlotCoords = new Vector2(thisSlot.cellSlotCoordinates.x, thisSlot.cellSlotCoordinates.y - (this.QuadrantRule().y + (i * -this.QuadrantRule().y))); //FORMULA = COORD.Y - [(QuadRule.Y) + (i * -(QuadRule.Y))]
-        //            if (nextSlotCoords.y > InventoryUIManager.instance.maximumCoordenates.y)//OR slot is taken//
-        //            {
-        //                Debug.Log("the slot does not exit!!!!");
-        //                return;
-        //            }
-        //            string slotName = $"Slot[{nextSlotCoords.x},{nextSlotCoords.y}]";
-        //            foreach (InventorySlot inventorySlot in InventoryUIManager.instance.listOfinventorySlots)
-        //            {
-        //                if (inventorySlot.name == slotName)
-        //                {
-        //                    otherSlots.Add(inventorySlot);
-        //                    inventorySlot.ShadeSlot();
-        //                }
-        //            }
-        //        }
-        //        break;
-        //    case 3:
-        //        for (int i = 0; i < itemSize.x; i++)//itemSize.x = 3
-        //        {
-        //            nextSlotCoords = new Vector2(thisSlot.cellSlotCoordinates.x, thisSlot.cellSlotCoordinates.y - (this.QuadrantRule().y + (i * -this.QuadrantRule().y)));
-        //            if (nextSlotCoords.y > InventoryUIManager.instance.maximumCoordenates.y)//OR slot is taken//
-        //            {
-        //                Debug.Log("the slot does not exit!!!!");
-        //                return;
-        //            }
-        //            string slotName = $"Slot[{nextSlotCoords.x},{nextSlotCoords.y}]";
-        //            foreach (InventorySlot inventorySlot in InventoryUIManager.instance.listOfinventorySlots)
-        //            {
-        //                if (inventorySlot.name == slotName)
-        //                {
-        //                    otherSlots.Add(inventorySlot);
-        //                    inventorySlot.ShadeSlot();
-        //                }
-        //            }
-        //        }
-        //        break;
-        //    case 4:
-        //        for (int i = 0; i < itemSize.x; i++)//itemSize.x = 4
-        //        {
-        //            nextSlotCoords = new Vector2(thisSlot.cellSlotCoordinates.x, thisSlot.cellSlotCoordinates.y - (this.QuadrantRule().y + (i * -this.QuadrantRule().y)));
-        //            if (nextSlotCoords.y > InventoryUIManager.instance.maximumCoordenates.y)//OR slot is taken//
-        //            {
-        //                Debug.Log("the slot does not exit!!!!");
-        //                return;
-        //            }
-        //            string slotName = $"Slot[{nextSlotCoords.x},{nextSlotCoords.y}]";
-        //            foreach (InventorySlot inventorySlot in InventoryUIManager.instance.listOfinventorySlots)
-        //            {
-        //                if (inventorySlot.name == slotName)
-        //                {
-        //                    otherSlots.Add(inventorySlot);
-        //                    inventorySlot.ShadeSlot();
-        //                }
-        //            }
-        //        }
-        //        break;
-        //    //InventorySlot otherSlot;
-        //    //UIManager.instance.listOfinventorySlots.IndexOf(this.thisSlot);
-        //    default:
-        //        break;
+        //    return;
         //}
-        //switch (itemSize.y)
+        //else
         //{
-        //    case 1:
-        //        Debug.Log("Already highlighting this slot");
-        //        break;
-        //    case 2:
-        //        for (int i = 1; i <= itemSize.y; i++)//itemSize.y = 2
-        //        {
-        //            nextSlotCoords = new Vector2(thisSlot.cellSlotCoordinates.x - (this.QuadrantRule().x + (i * -this.QuadrantRule().x)), thisSlot.cellSlotCoordinates.y); //FORMULA = COORD.Y - [(QuadRule.Y) + (i * -(QuadRule.Y))]
-        //            if (nextSlotCoords.x > InventoryUIManager.instance.maximumCoordenates.x)//OR slot is taken//
-        //            {
-        //                Debug.Log("the slot does not exit!!!!");
-        //                return;
-        //            }
-        //            string slotName = $"Slot[{nextSlotCoords.x},{nextSlotCoords.y}]";
-        //            foreach (InventorySlot inventorySlot in InventoryUIManager.instance.listOfinventorySlots)
-        //            {
-        //                if (inventorySlot.name == slotName)
-        //                {
-        //                    otherSlots.Add(inventorySlot);
-        //                    inventorySlot.ShadeSlot();
-        //                }
-        //            }
-        //        }
-        //        break;
-        //    case 3:
-        //        for (int i = 0; i < itemSize.y; i++)//itemSize.y = 2
-        //        {
-        //            nextSlotCoords = new Vector2(thisSlot.cellSlotCoordinates.x - (this.QuadrantRule().x + (i * -this.QuadrantRule().x)), thisSlot.cellSlotCoordinates.y); //FORMULA = COORD.Y - [(QuadRule.Y) + (i * -(QuadRule.Y))]
-        //            if (nextSlotCoords.x > InventoryUIManager.instance.maximumCoordenates.x)//OR slot is taken//
-        //            {
-        //                Debug.Log("the slot does not exit!!!!");
-        //                return;
-        //            }
-        //            string slotName = $"Slot[{nextSlotCoords.x},{nextSlotCoords.y}]";
-        //            foreach (InventorySlot inventorySlot in InventoryUIManager.instance.listOfinventorySlots)
-        //            {
-        //                if (inventorySlot.name == slotName)
-        //                {
-        //                    otherSlots.Add(inventorySlot);
-        //                    inventorySlot.ShadeSlot();
-        //                }
-        //            }
-        //        }
-        //        break;
-        //    case 4:
-        //        for (int i = 0; i < itemSize.y; i++)//itemSize.y = 2
-        //        {
-        //            nextSlotCoords = new Vector2(thisSlot.cellSlotCoordinates.x - (this.QuadrantRule().x + (i * -this.QuadrantRule().x)), thisSlot.cellSlotCoordinates.y); //FORMULA = COORD.Y - [(QuadRule.Y) + (i * -(QuadRule.Y))]
-        //            if (nextSlotCoords.x > InventoryUIManager.instance.maximumCoordenates.x)//OR slot is taken//
-        //            {
-        //                Debug.Log("the slot does not exit!!!!");
-        //                return;
-        //            }
-        //            string slotName = $"Slot[{nextSlotCoords.x},{nextSlotCoords.y}]";
-        //            foreach (InventorySlot inventorySlot in InventoryUIManager.instance.listOfinventorySlots)
-        //            {
-        //                if (inventorySlot.name == slotName)
-        //                {
-        //                    otherSlots.Add(inventorySlot);
-        //                    inventorySlot.ShadeSlot();
-        //                }
-        //            }
-        //        }
-        //        break;
-        //    default:
-        //        break;
-        //}
-        //switch (itemSize.ToString())
-        //{
-        //    case "(0.0, 0.0)":
-        //        Debug.Log("AIAIAAIAIAIA CARRAPATO NAO TEM PAI!!!!!!!!!!!");
-        //        break;
-        //    default:
-        //        break;
+        //    storedItem = thisSlot.storedItem;
+        //    itemSize = storedItem.itemInventorySize;
         //}
 
-        //xCoordComponents = new List<float>();
-        //yCoordComponents = new List<float>();
+        if (InventoryUIManager.instance.itemButtonReference == null)
+        {
+            return;
+        }
+        else
+        {
+            itemSize = InventoryUIManager.instance.itemButtonReference.GetComponent<ItemButtonUI>().itemReference.itemInventorySize;
+        }
 
-
-        
         if (itemSize.x == 2 || itemSize.x == 1)
         {
             for (int i = 1; i <= itemSize.x; i++)
@@ -227,10 +96,42 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 }
             }
         }
-        //xCoordComponents.Sort()
-        //InventoryUIManager.instance.groupOfSelectedInventorySlots = otherSlots;
-        //xCoordComponents.Clear();
-        //yCoordComponents.Clear();
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///
+
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    foreach (InventorySlot inventorySlot in InventoryUIManager.instance.groupOfSelectedInventorySlots)
+        //    {
+        //        if (inventorySlot.storedItem != null)
+        //        {
+        //            Debug.Log("chubirubis");
+        //            break;
+        //        }
+        //    }
+        //    InventoryUIManager.instance.PutItemIconButtonIntoInventoryUI();
+        //}
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        foreach (InventorySlot inventorySlot in InventoryUIManager.instance.groupOfSelectedInventorySlots)
+        {
+            if (inventorySlot.storedItem != null)
+            {
+                Debug.Log("chubirubis");
+                return;
+            }            
+        }
+
+        foreach (InventorySlot inventorySlot in InventoryUIManager.instance.groupOfSelectedInventorySlots)
+        {
+            inventorySlot.UnshadeSlot();
+        }
+
+        InventoryUIManager.instance.canGrabButton = false;
+        InventoryUIManager.instance.PutItemIconButtonIntoInventoryUI();
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -275,4 +176,6 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 return new Vector2(0, 0);
         }
     }
+
+    
 }

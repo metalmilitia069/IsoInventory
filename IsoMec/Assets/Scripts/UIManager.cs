@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
     #endregion
 
     [SerializeField]
-    private GameObject _inventoryPanel;
+    public GameObject inventoryPanel;
 
     [SerializeField]
     public ItemFloatingImage itemFloatingImageGO;
@@ -62,13 +62,13 @@ public class UIManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHand
     {
         if (Input.GetButtonDown("InventoryButton"))
         {
-            if (!this._inventoryPanel.activeSelf)
+            if (!this.inventoryPanel.activeSelf)
             {
-                this._inventoryPanel.gameObject.SetActive(true);
+                this.inventoryPanel.gameObject.SetActive(true);
             }
             else
             {
-                this._inventoryPanel.gameObject.SetActive(false);
+                this.inventoryPanel.gameObject.SetActive(false);
             }
         }
     }

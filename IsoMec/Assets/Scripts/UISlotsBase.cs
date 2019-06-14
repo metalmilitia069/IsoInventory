@@ -176,12 +176,7 @@ public class UISlotsBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
 
     public void OnPointerExit(PointerEventData eventData)
-    {
-        //UnshadeSlot();
-        //for (int i = 0; i < UIManager.instance.listOfinventorySlots.Capacity; i++)
-        //{
-        //    UIManager.instance.listOfinventorySlots[i].UnshadeSlot();
-        //}
+    {       
         
     }
 
@@ -211,10 +206,6 @@ public class UISlotsBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             }
             centerX = x / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
             centerY = y / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
-
-            //InventoryUIManager.instance.ItemFloatingImage.transform.position.x = centerX;
-            //InventoryUIManager.instance.ItemFloatingImage.transform.position.y = centerY;
-            InventoryUIManager.instance.itemUIButton.transform.position = new Vector3(centerX, centerY, 0);
         }
     }
 }
