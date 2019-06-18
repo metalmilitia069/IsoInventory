@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UISlotsBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class UISlotsBase : MonoBehaviour, IPointerExitHandler, IPointerClickHandler//,IPointerEnterHandler
 {
     [Header("Item Name Floating Text")]
     //[Multiline(8)]
@@ -116,84 +116,83 @@ public class UISlotsBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         //this.itemStatsNumbersText.text = null; 
     }
 
-    public void TransferItem()
-    {
+    //public void TransferItem()
+    //{
         
-    }
+    //}
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        //ShadeSlot();
-        if (Input.GetMouseButtonDown(0))
-        {
-            //if (InventoryUIManager.instance.groupOfSelectedInventorySlots.Count > 0)
-            //{
-            //    Debug.Log("mozo");
-            //    float x = 0;
-            //    float y = 0;
-            //    float centerX = 0;
-            //    float centerY = 0;
-            //    foreach (InventorySlot inventorySlot in InventoryUIManager.instance.groupOfSelectedInventorySlots)
-            //    {
-            //        x += inventorySlot.transform.position.x;
+    //public void OnPointerEnter(PointerEventData eventData)
+    //{
+    //    //ShadeSlot();
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        //if (InventoryUIManager.instance.groupOfSelectedInventorySlots.Count > 0)
+    //        //{
+    //        //    Debug.Log("mozo");
+    //        //    float x = 0;
+    //        //    float y = 0;
+    //        //    float centerX = 0;
+    //        //    float centerY = 0;
+    //        //    foreach (InventorySlot inventorySlot in InventoryUIManager.instance.groupOfSelectedInventorySlots)
+    //        //    {
+    //        //        x += inventorySlot.transform.position.x;
 
-            //        y += inventorySlot.transform.position.y;
-            //    }
-            //    centerX = x / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
-            //    centerY = y / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
+    //        //        y += inventorySlot.transform.position.y;
+    //        //    }
+    //        //    centerX = x / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
+    //        //    centerY = y / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
 
-            //    //InventoryUIManager.instance.ItemFloatingImage.transform.position.x = centerX;
-            //    //InventoryUIManager.instance.ItemFloatingImage.transform.position.y = centerY;
-            //    InventoryUIManager.instance.ItemFloatingImage.transform.position = new Vector3(centerX, centerY, 0);
-            //}
+    //        //    //InventoryUIManager.instance.ItemFloatingImage.transform.position.x = centerX;
+    //        //    //InventoryUIManager.instance.ItemFloatingImage.transform.position.y = centerY;
+    //        //    InventoryUIManager.instance.ItemFloatingImage.transform.position = new Vector3(centerX, centerY, 0);
+    //        //}
 
-            //Debug.Log("mozo");
-            //float x = 0;
-            //float y = 0;
-            //float centerX = 0;
-            //float centerY = 0;
-            //foreach (InventorySlot inventorySlot in InventoryUIManager.instance.groupOfSelectedInventorySlots)
-            //{
-            //    x += inventorySlot.transform.position.x;
+    //        //Debug.Log("mozo");
+    //        //float x = 0;
+    //        //float y = 0;
+    //        //float centerX = 0;
+    //        //float centerY = 0;
+    //        //foreach (InventorySlot inventorySlot in InventoryUIManager.instance.groupOfSelectedInventorySlots)
+    //        //{
+    //        //    x += inventorySlot.transform.position.x;
                 
-            //    y += inventorySlot.transform.position.y;
-            //}
-            //centerX = x / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
-            //centerY = y / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
+    //        //    y += inventorySlot.transform.position.y;
+    //        //}
+    //        //centerX = x / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
+    //        //centerY = y / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
 
-            ////InventoryUIManager.instance.ItemFloatingImage.transform.position.x = centerX;
-            ////InventoryUIManager.instance.ItemFloatingImage.transform.position.y = centerY;
-            //InventoryUIManager.instance.ItemFloatingImage.transform.position = new Vector3(centerX, centerY, 0);
-        }
-    }
+    //        ////InventoryUIManager.instance.ItemFloatingImage.transform.position.x = centerX;
+    //        ////InventoryUIManager.instance.ItemFloatingImage.transform.position.y = centerY;
+    //        //InventoryUIManager.instance.ItemFloatingImage.transform.position = new Vector3(centerX, centerY, 0);
+    //    }
+    //}
 
-    public void ShadeSlot()
-    {
-        for (int i = 0; i < cellImage.Length; i++)
-        {
-            cellImage[i].color = Color.green;
-        }
-    }
+    //public void ShadeSlot()
+    //{
+    //    for (int i = 0; i < cellImage.Length; i++)
+    //    {
+    //        cellImage[i].color = Color.green;
+    //    }
+    //}
 
     public void OnPointerExit(PointerEventData eventData)
     {       
         
     }
 
-    public void UnshadeSlot()
-    {
-        for (int i = 0; i < cellImage.Length; i++)
-        {
-            cellImage[i].color = new Color(1, 1, 1, 100 / 255f);
-        }
+    //public void UnshadeSlot()
+    //{
+    //    for (int i = 0; i < cellImage.Length; i++)
+    //    {
+    //        cellImage[i].color = new Color(1, 1, 1, 100 / 255f);
+    //    }
 
-    }
+    //}
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (InventoryUIManager.instance.groupOfSelectedInventorySlots.Count > 0)
-        {
-            Debug.Log("mozo");
+        {            
             float x = 0;
             float y = 0;
             float centerX = 0;

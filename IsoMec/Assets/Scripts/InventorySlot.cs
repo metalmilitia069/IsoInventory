@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : UISlotsBase, IPointerEnterHandler, IPointerExitHandler
+public class InventorySlot : UISlotsBase, IPointerExitHandler//,IPointerEnterHandler
 {
     //public GameObject lalagameObject;
     //public void OnPointerEnter(PointerEventData eventData)

@@ -32,6 +32,7 @@ public class Item : MonoBehaviour
     public bool isStackable = false;
     public int itemCounter = 1;
     public Vector2 itemInventorySize;
+    public Button itemUIButton;
 
     [Header("Item States")]
     [SerializeField]
@@ -40,6 +41,7 @@ public class Item : MonoBehaviour
     public bool wasPicked = false;
     [SerializeField]
     private int _pickableCondition = 0;
+
 
     public bool PickableItem
     {

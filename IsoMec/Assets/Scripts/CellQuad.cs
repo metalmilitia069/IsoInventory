@@ -5,24 +5,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
-{
-    //[SerializeField]
-    //public Image cellImage;
+{    
     [SerializeField]
     [Range(1,4)]
     public int quadNumber;
     [SerializeField]
     public Vector2 itemSize;
     [SerializeField]
-    public InventorySlot thisSlot;
-    //[SerializeField]
-    //public InventorySlot otherSlot;
-    //[SerializeField]
-    //public List<InventorySlot> otherSlots;
-    //[SerializeField]
-    //public Vector2 nextSlotCoords;
-    //[SerializeField]
-    //public Vector2 maximumCoordenates;
+    public InventorySlot thisSlot;    
     public List<float> xCoordComponents;
     public List<float> yCoordComponents;
 
@@ -30,16 +20,6 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //if (thisSlot.storedItem == null)
-        //{
-        //    return;
-        //}
-        //else
-        //{
-        //    storedItem = thisSlot.storedItem;
-        //    itemSize = storedItem.itemInventorySize;
-        //}
-
         if (InventoryUIManager.instance.itemButtonReference == null)
         {
             return;
@@ -63,7 +43,6 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 yCoordComponents.Add(thisSlot.cellSlotCoordinates.y - (this.QuadrantRule().y + (i * -this.QuadrantRule().y)));
             }
         }
-
         
         if (itemSize.y == 2 || itemSize.y == 1)
         {
@@ -89,29 +68,12 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 {
                     if (inventorySlot.name == slotName)
                     {
-                        //otherSlots.Add(inventorySlot);
-                        inventorySlot.ShadeSlot();
                         InventoryUIManager.instance.groupOfSelectedInventorySlots.Add(inventorySlot);
                     }
                 }
             }
         }
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ///
-
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    foreach (InventorySlot inventorySlot in InventoryUIManager.instance.groupOfSelectedInventorySlots)
-        //    {
-        //        if (inventorySlot.storedItem != null)
-        //        {
-        //            Debug.Log("chubirubis");
-        //            break;
-        //        }
-        //    }
-        //    InventoryUIManager.instance.PutItemIconButtonIntoInventoryUI();
-        //}
+        UIShaderManager.instance.ShadeSlots();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -125,11 +87,6 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }            
         }
 
-        foreach (InventorySlot inventorySlot in InventoryUIManager.instance.groupOfSelectedInventorySlots)
-        {
-            inventorySlot.UnshadeSlot();
-        }
-
         InventoryUIManager.instance.canGrabButton = false;
         InventoryUIManager.instance.PutItemIconButtonIntoInventoryUI();
     }
@@ -140,24 +97,23 @@ public class CellQuad : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         yCoordComponents.Clear();
         foreach (InventorySlot inventorySlot in InventoryUIManager.instance.groupOfSelectedInventorySlots)
         {
-            inventorySlot.UnshadeSlot();
+            UIShaderManager.instance.UnshadeSlots(inventorySlot);
         }
-        //otherSlots.Clear();
+        
         InventoryUIManager.instance.groupOfSelectedInventorySlots.Clear();
+                
+        if (UIShaderManager.instance.transferenceButtonUI != null)
+        {
+            UIShaderManager.instance.UnshadeSlots(UIShaderManager.instance.transferenceButtonUI);
+        }
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        QuadrantRule();
-        //Debug.Log(itemSize.ToString());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        QuadrantRule();        
+    }   
 
     public Vector2 QuadrantRule()
     {

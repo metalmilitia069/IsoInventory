@@ -33,21 +33,14 @@ public class InventoryUIManager : MonoBehaviour
     public 
     bool done = false;
     public bool canGrabButton = false;
+    [SerializeField]
+    public GameObject floatingItemButtonParent;
 
     private void Start()
-    {
-        //listOfinventorySlots.Remove(new Vector2(1f, 1f)); .(FindObjectsOfType<InventorySlot>());
-        //dictionaryOfInventorySlots.OrderBy(x => x.Key);
+    {       
         listOfinventorySlots.AddRange(FindObjectsOfType<InventorySlot>());
-
-        
-       
         InventoryUIManager.instance.listOfinventorySlots = InventoryUIManager.instance.listOfinventorySlots.OrderBy(tile => tile.name).ToList();
-
-
-
-        CalculateMaximunCoordinates();
-        //itemUIButton.image.rectTransform.sizeDelta = new Vector2(30f, 45f);
+        CalculateMaximunCoordinates();        
     }
     
 
@@ -98,8 +91,7 @@ public class InventoryUIManager : MonoBehaviour
                 while (j < item.itemInventorySize.x + q)
                 {
                     foreach (InventorySlot inventorySlot in listOfinventorySlots)
-                    {
-                        //if (inventorySlot.name == $"Slot[{i},{j}]")
+                    {                        
                         if(inventorySlot.cellSlotCoordinates == new Vector2(i,j))
                         {
                             k = this.listOfinventorySlots.IndexOf(inventorySlot);
@@ -109,6 +101,7 @@ public class InventoryUIManager : MonoBehaviour
                     if (this.listOfinventorySlots[k].storedItem == null)
                     {
                         this.groupOfSelectedInventorySlots.Add(this.listOfinventorySlots[k]);
+
                         this.listOfinventorySlots[k].storedItem = item;
                         j++;
                         done = true;
@@ -158,11 +151,16 @@ public class InventoryUIManager : MonoBehaviour
             }
             centerX = x / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
             centerY = y / InventoryUIManager.instance.groupOfSelectedInventorySlots.Count;
-                        
+
+            itemButtonReference.GetComponent<ItemButtonUI>().AddSlotsReferenceToButton();
+
             itemButtonReference.transform.position = new Vector3(centerX, centerY, 0);
-            
-            itemButtonReference.transform.parent = UIManager.instance.inventoryPanel.transform;
+            itemButtonReference.transform.parent = floatingItemButtonParent.transform;
             itemButtonReference.transform.localScale = Vector3.one;
+
+            UIShaderManager.instance.shadeColor = UIShaderManager.ShadeColor.Default;
+            UIShaderManager.instance.ApplyShade();            
+
             itemButtonReference = null;
 
             if (groupOfSelectedInventorySlots[0].storedItem != null)
@@ -182,6 +180,7 @@ public class InventoryUIManager : MonoBehaviour
         }
         else
         {
+            itemButtonReference.transform.parent = UIManager.instance.inventoryPanel.transform;
             itemButtonReference.transform.position = Input.mousePosition;
         }
     }

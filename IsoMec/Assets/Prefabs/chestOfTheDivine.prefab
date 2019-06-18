@@ -684,6 +684,7 @@ MonoBehaviour:
   isStackable: 0
   itemCounter: 0
   itemInventorySize: {x: 2, y: 3}
+  itemUIButton: {fileID: 6488127073938116748}
   _isPickable: 0
   wasPicked: 0
   _pickableCondition: 0
